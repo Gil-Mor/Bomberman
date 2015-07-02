@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Game Objects">
+      <UniqueIdentifier>{76c6bef9-21f6-44a7-a044-759aa8ae2e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level">
+      <UniqueIdentifier>{3a1e6425-ba19-41a2-8b8e-5b76f546f2df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level\Board">
+      <UniqueIdentifier>{0f90db15-22ff-4d78-ae40-2e0d7a1c77a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level\Board\AI Map">
+      <UniqueIdentifier>{a8abc198-ec63-481d-a372-f0b8360097be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{535a8a32-cc69-4d07-8a22-56fb69843bf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Audio">
+      <UniqueIdentifier>{0660943b-24a3-4174-ba40-2bf6f77c243e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\others">
+      <UniqueIdentifier>{ed36bea8-4898-4b92-8a9c-6b7211c74c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controller">
+      <UniqueIdentifier>{739502d2-af33-48ac-82ed-bc09304b6622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus">
+      <UniqueIdentifier>{5b764005-0756-4472-9bc0-65a9eb04f3ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus\Base">
+      <UniqueIdentifier>{b7dffa0e-4f21-4086-9a0e-844c344f9a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\general">
+      <UniqueIdentifier>{c5341920-bf46-4bfa-ad80-309330e792ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Movable">
+      <UniqueIdentifier>{38b61c61-b5db-45ab-afd4-cf1399bd2c17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Movable\Base">
+      <UniqueIdentifier>{a9ce2194-5f2a-4650-bee9-bc5294e61564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Movable\BomberMan">
+      <UniqueIdentifier>{098c06b1-e7ce-4c34-9999-f2bc004bb478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Movable\BomberMan\Enemy">
+      <UniqueIdentifier>{9476e804-c4f3-447d-a1f8-2ea07ae8ebdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Movable\BomberMan\Player">
+      <UniqueIdentifier>{e64606f5-61aa-4c34-b931-d34ee37556c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Movable\BomberMan\Base">
+      <UniqueIdentifier>{110a6158-a50d-4cbf-a0e4-b32e86121849}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus\Main Menu">
+      <UniqueIdentifier>{672de0c2-62c1-46ae-8d57-4ad8100a9a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus\Game Menu">
+      <UniqueIdentifier>{227bda3b-153d-41ab-9642-298d82b8c6d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus\Levels Menu">
+      <UniqueIdentifier>{bbc13c9d-a8dd-4375-88c1-64ac507ebf75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus\Instruction Pages">
+      <UniqueIdentifier>{22aa99ec-d903-45eb-9658-0f4ba32a6d7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Objects\Base">
+      <UniqueIdentifier>{384d8d4d-b0ba-4140-9ea2-e523f73239b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Level\Clock">
+      <UniqueIdentifier>{a042e20f-eca7-464e-a673-1b3d773ef584}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menus\Pause Menu">
+      <UniqueIdentifier>{f0a368b1-e03b-422a-a78b-f59fb492b294}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AgressiveEnemy.cpp">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="AIEnemy.cpp">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="AIMap.cpp">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClCompile>
+    <ClCompile Include="AIMapBFSProxy.cpp">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioManager.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="BFSVisitor.cpp">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardBuffer.cpp">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardProxy.cpp">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="boardUtils.cpp">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="BomberMan.cpp">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BomberManProxy.cpp">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonus.cpp">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerButton.cpp">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerStateButton.cpp">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerProxy.cpp">
+      <Filter>Source Files\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Dynamite.cpp">
+      <Filter>Source Files\Game Objects\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>Source Files\Game Objects\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBoardProxy.cpp">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionsBoardProxy.cpp">
+      <Filter>Source Files\Game Objects\Movable</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplodingWall.cpp">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClCompile>
+    <ClCompile Include="FlipPageButton.cpp">
+      <Filter>Source Files\Menus\Instruction Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeTile.cpp">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMenu.cpp">
+      <Filter>Source Files\Menus\Game Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Game Objects\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClock.cpp">
+      <Filter>Source Files\Level\Clock</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionPage.cpp">
+      <Filter>Source Files\Menus\Instruction Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicObjectsManager.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicWindow.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelBuilder.cpp">
+      <Filter>Source Files\general</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelProxy.cpp">
+      <Filter>Source Files\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelButton.cpp">
+      <Filter>Source Files\Menus\Levels Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelsMenu.cpp">
+      <Filter>Source Files\Menus\Levels Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelFileException.cpp">
+      <Filter>Source Files\general</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Source Files\general</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\general</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelStatusBar.cpp">
+      <Filter>Source Files\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\Menus\Main Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicButton.cpp">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="NumOfPlayersButton.cpp">
+      <Filter>Source Files\Menus\Game Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="NumOfEnemiesButton.cpp">
+      <Filter>Source Files\Menus\Game Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="StoneWall.cpp">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClCompile>
+    <ClCompile Include="Teleport.cpp">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Movable.cpp">
+      <Filter>Source Files\Game Objects\Movable\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>Source Files\Menus\Pause Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Vertex.cpp">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClCompile>
+    <ClCompile Include="returnButton.cpp">
+      <Filter>Source Files\Menus\Instruction Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="Posb.cpp">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AgressiveEnemy.h">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="AIEnemy.h">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="AIMap.h">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClInclude>
+    <ClInclude Include="AIMapBFSProxy.h">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioManager.h">
+      <Filter>Source Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="BFSVisitor.h">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardBuffer.h">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardProxy.h">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="boardUtils.h">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="BomberManProxy.h">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BomberMan.h">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonus.h">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerButton.h">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerStateButton.h">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Source Files\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerProxy.h">
+      <Filter>Source Files\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="definitions.h">
+      <Filter>Source Files\general</Filter>
+    </ClInclude>
+    <ClInclude Include="Dynamite.h">
+      <Filter>Source Files\Game Objects\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>Source Files\Game Objects\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBoardProxy.h">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionsBoardProxy.h">
+      <Filter>Source Files\Game Objects\Movable</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplodingWall.h">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClInclude>
+    <ClInclude Include="FlipPageButton.h">
+      <Filter>Source Files\Menus\Instruction Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeTile.h">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMenu.h">
+      <Filter>Source Files\Menus\Game Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Source Files\Game Objects\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Chronometer.h">
+      <Filter>Source Files\Level\Clock</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClock.h">
+      <Filter>Source Files\Level\Clock</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionPage.h">
+      <Filter>Source Files\Menus\Instruction Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicObjectsManager.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicWindow.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpritesList.h">
+      <Filter>Source Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelBuilder.h">
+      <Filter>Source Files\general</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Source Files\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelProxy.h">
+      <Filter>Source Files\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelButton.h">
+      <Filter>Source Files\Menus\Levels Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelsMenu.h">
+      <Filter>Source Files\Menus\Levels Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelFileException.h">
+      <Filter>Source Files\general</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Source Files\general</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelStatusBar.h">
+      <Filter>Source Files\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Source Files\Menus\Main Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicButton.h">
+      <Filter>Source Files\Menus\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="NumOfPlayersButton.h">
+      <Filter>Source Files\Menus\Game Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="NumOfEnemiesButton.h">
+      <Filter>Source Files\Menus\Game Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="StoneWall.h">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClInclude>
+    <ClInclude Include="Teleport.h">
+      <Filter>Source Files\Game Objects\others</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source Files\Game Objects\Movable\BomberMan\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Movable.h">
+      <Filter>Source Files\Game Objects\Movable\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>Source Files\Menus\Pause Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Source Files\Level\Board\AI Map</Filter>
+    </ClInclude>
+    <ClInclude Include="returnButton.h">
+      <Filter>Source Files\Menus\Instruction Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="Posb.h">
+      <Filter>Source Files\Level\Board</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\README.txt" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,509 @@
+{\rtf1\fbidis\ansi\deff0{\fonttbl{\f0\fnil\fcharset0 Courier New;}{\f1\fnil\fcharset177 Courier New;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\ltrpar\lang1033\f0\fs22 1.----------- README ----------------\par
+\par
+2. ---------- STUDENT --------------- \par
+Ex5 OOP2 - Project\par
+Gil Mor \lang1037\f1\rtlch\'e2\'e9\'ec \'ee\'e5\'f8 300581030\lang1033\f0\ltrch\par
+\par
+3.-------------- THE PROJECT - GAME RULES -----------------\par
+\par
+The game is Playing With Fire.\par
+Can be played here - http://www.playingwithfiregame2.com/\par
+\par
+* The goal is to blow the enemies up before they blow you.\par
+\par
+* There's a time limit for every level which is set to 3 minutes by default\par
+  but can be set in the level file.\par
+\par
+* The user can choose to play with one or 2 players against 0 to 3 AI enemies.\par
+  You can't play 2 players and 3 enemies because all BomberMan need\par
+  to be placed in the corners.\par
+\par
+* Each BomberMan has a health meter. Every time it explodes it's health decreases.\par
+  After 3 hits he's dead but there's a bonus health tile. \par
+\par
+* BomberMan can place 1 dynamite at a time but there is a bonus that lets you place more..\par
+\par
+* Dynamites blow up people and barrels but don't blow walls, other dynamites or bonuses.\par
+\par
+* Some of the barrels contain bonus tiles.\par
+\par
+* There won't be a saving option but there is a pause state.\par
+\par
+* Dynamites can also be teleported and their explosion also affects\par
+  whats inside the teleport.\par
+\par
+* Objects can be teleported once every few seconds. not twice on a row.\par
+\par
+\par
+\par
+\par
+--- BONUS TILES ---\par
+\par
+*** Bonus Tiles will always be hidden inside the barrels at the beginning of the level.\par
+\par
+*** With some Tiles, If you take multiple tiles their affect on you increases.\par
+\par
+* health tile - increases health by 33% percent. The maximum is 166%.\par
+\par
+* Increase Explosion Radius - with each one of these your Dynamites explosion radius\par
+  increases in three tiles in every direction. \par
+  Dynamite explosion can reach the end of the level..\par
+\par
+* Run faster - you can take two of these, each one makes you run faster.\par
+\par
+* Kickabilty - allows the BomberMan to kick a dynamite. \par
+\par
+\par
+----- BUILDING A LEVEL ------\par
+Look at the levels in levels folder. \par
+The level have to be surrounded with walls '#'.\par
+The Bomberman will be placed in the corners so you need to put placeholders '*'\par
+in the corners. Barrels are placed randomly so the place holder makes sure that\par
+there wont be a barrel there..\par
+Place teleports with 'x' (lower case) and put a single digit somewhere around it.\par
+The digit is the teleport's ID. Put the same digit around that teleport twin.\par
+You can specify the time given to the level by writing \par
+'time' and the time in seconds you give to win this board.\par
+The default time now is 3 minutes.\par
+Give the file some name in add it to the 'levels.txt' file.\par
+\par
+Actually... There is a button for every level so in order to add\par
+a level you need to add a button but you just replace one of the files\par
+level1, level2, .. level4 and then look for the button that loads this level..\par
+\par
+The Level buttons order is:\par
+top left: level2\par
+top right: level 3\par
+bottom left: level1\par
+bottom right level4\par
+\par
+NOTE: Like in all versions of the game i played.. If the board is not in the shape of\par
+      # # # # ... # meaning wall space wall space, There's a chance the enemies\par
+      will be stuck because the dynamites they'll place won't hit any barrels.\par
+      You can make different levels but just make sure you dont have ### 3 walls\par
+      without a space.\par
+\par
+\par
+\par
+\par
+4.--------------- DESIGN -----------------\par
+\par
+--- Controller ---\par
+Controls the flow of the program by switching states. \par
+Activates the menus, loads levels from level builder. \par
+The states are set through the 'ControllerProxy' which is given to classes\par
+that need to communicate with the controller.\par
+\par
+* Controller States are:  MAIN_MENU,  GAME_MENU, INSTRUCTION_MENU, \par
+                          LEVELS_MENU, PLAYING, PAUSE, EXITING.\par
+\par
+\par
+\par
+--- Level ---\par
+Level runs a single level. The level has a board, \par
+GameClock (encapsulates 'Chronometer' which is a clock from sf::tools Tool pack),\par
+Level Proxy and Level Status Bar.\par
+\par
+---- Board ----\par
+Since many objects can be on the same tile and moving objects\par
+need to move from tile to tile a lot the Board is a 2d vector of forward_lists.\par
+\par
+* The Board runs the game by updating all the objects.\par
+  The board has a BoardProxy which encapsulates calls to the board's methods\par
+  from game objects.\par
+\par
+* Board has an AIMap which is a map that's used to build paths (using boost::bfs) for the\par
+  enemies. paths to the nearest player or the a safe position.\par
+\par
+*** Board Buffer - objects 'update' their state each round and tell the board\par
+    what they did (moved, added stuff to the board, removed stuff), the board\par
+    saves this information in the BoardBuffer and after each round the Buffer\par
+    applies these changes to the board.\par
+\par
+    The Buffer uses std::set to save the pointers of objects to remove because\par
+    there's a chance that two things will ask to remove something twice \par
+    (BomberMan and Bonus..)..\par
+\par
+\par
+* Board Proxies - There are three types of Proxies. BoardProxy is the base class\par
+  and provides basic operations and player related operations. \par
+  'EnemyBoardProxy' provides the enemies information like is the next tile is free\par
+  and paths to the player or to a safe place. \par
+  It would be simple to add more functionalities like going to the nearest bonus\par
+  or Barrel..\par
+\par
+\par
+--- Level Construction ----\par
+LevelBuilder is a singleton responsible for reading levels from the files.\par
+It saves the objects in the Board::GameObjects struct and then passes it\par
+to the level.\par
+\par
+--- Logging Errors ---\par
+Logger is a singleton which logs errors to a log file.\par
+Mostly used by LevelBuilder.\par
+\par
+\par
+--- Exceptions ---\par
+LevelBuilder throws LevelFileException if something fails.\par
+\par
+\par
+\par
+\par
+-------- Game Objects ------------\par
+\par
+\par
+* Game objects have their board position. It makes it easier to do stuff when\par
+  the object knows it's own position. \par
+\par
+* Movable objects are derived from Movable class which executes the movement operations.\par
+  All Movable objects move just the same except the explosion.\par
+\par
+  the object has a Movable::Direction. it tries to move in that direction,\par
+  it's offset is moved by '_speed*MOVE_PER_FRAME', then, if the offset is big enough\par
+  it collides with the next tile and updates it's '_movedTile' boolean flag in the collision\par
+  methods. Then if it moved Movable tells the board to move it.\par
+  Teleportation is a special case that needs to be handled but all movable objects\par
+  get teleported just the same (except explosions which don't teleport).\par
+\par
+* Objects move in 'offset' meaning they don't move a tile in each movement but\par
+  they can move inside a tile and move 'smoothly' between tiles.\par
+\par
+* Enemy movement - Although the enemy gets path with position to go to he's \par
+converting the path to directions\par
+because it's a lot more easy to handle the smooth movement when dealing with\par
+requests to go in a certain direction then to do this with absolute positions.\par
+\par
+ \par
+* BomberMan\par
+Is the base class of the BomberMan. Player and AIEnemy. \par
+Their collisions and animation are the same.. Player overrides Bonus collision\par
+because the player plays a sound when collecting a bonus.\par
+\par
+\par
+\par
+--- Enemies ----\par
+\par
+AIEnemy is the base class of enemies.\par
+Enemies also have states that they move between according to information like\par
+if they're in danger.\par
+\par
+I had Stupid enemy which had random movement\par
+and AggressiveEnemy which took a path to one of the players. I deleted Stupid enemy\par
+and stayed with only Aggressive Enemy but we could add more enemies that\par
+act differently by changing the order of states and adding more functionality\par
+to AIMap.\par
+\par
+\par
+\par
+* Dynamites - BomberMan places a dynamite and gives it a 'BomberManProxy'\par
+  so that the dynamite can make a call back to the BomberMan to increment it's\par
+  available dynamites count.\par
+\par
+  The Dynamite places a 'center explosion'. \par
+\par
+* Explosions - The center Explosion collides with all four tiles\par
+  in four directions. If the Explosion 'moved' (didn't hit a stone wall)\par
+  then it propagates four different explosions, all with radius-1 and each one\par
+  with it's own direction.\par
+  Then, each explosions tries to move in it's own direction.\par
+  If it succeed then it propagates another explosions in the same direction\par
+  with radius-1. on and on until the explosion hits a wall and sets it's \par
+  _propagate flag to false or until radius == 0.\par
+\par
+\par
+--- Explosion Proxy ---\par
+since only dynamites and explosions need to place explosions on the board, \par
+so in order that BomberMan won't accidentally place an explosions\par
+instead of a Dynamite, we give that ability only to dynamites and Explosions.\par
+\par
+\par
+--- Collisions ---\par
+I'm using double Dispatch inside the classes.\par
+\par
+\par
+\par
+* Exploding Walls - are walls that explode when colliding with explosions.\par
+\par
+\par
+* Bonuses - Since all Bonuses act exactly the same I'll \par
+  do one Bonus class and it'll have an enum\par
+  with bonus types. It'll get it's type on construction.\par
+\par
+\par
+\par
+---- Graphics ----\par
+I encapsulated sfml objects inside my own classes like Sprite and GrpahicWindow.\par
+Since the use of these objects is th same in most cases (draw a sprite, set texture etc..),\par
+If you'd want to change the graphic library or the sfml object type used you won't need\par
+to all the code just the parts where the use is more heavy like poll events and 'mapCoordsToPixles'..\par
+The Sprite class encapsulates sf::RectangleShape and GraphicWindow encapsulates sf::RenderWindow.\par
+\par
+\par
+--- Audio ---\par
+AudioManager is a singleton responsible for loading sounds. It saves them\par
+and gives references to the objects so it's possible, for example,\par
+to turn off all the sound effects.\par
+MusicButton class controls these operations.\par
+\par
+\par
+\par
+\par
+-------- Menus ---------\par
+All Menus inherit from Menu base class.\par
+The menus just set their different buttons and background image \par
+but they all use the 'run' method of the Base class.\par
+\par
+------- Buttons ---------\par
+Button is the base class for all buttons and implements the functionality of\par
+a button.\par
+\par
+* ControllerButton - is a button that calls methods in the controller \par
+  like number of players and number of enemies.\par
+\par
+* ControllerStateButton - has a certain ControllerState and \par
+  it calls the controller's setState method.\par
+\par
+\par
+--- Proxies to objects after construction---\par
+\par
+Since I'm building the objects in LevelBuilder, \par
+The Level and the board can't be ready before the objects are so i can't\par
+give the proxies...\par
+\par
+\par
+\par
+--- Level and Board default cotrs ---\par
+I didn't find a way of loading a level, playing, possibly pausing and then resuming \par
+without having a Level member in the controller which enforces me to give it a default cotr\par
+which has to initialize the level proxies and the board which in turn also has to \par
+initialize it's own proxies.. \par
+If I want to be able to show the instruction page when pausing it means going \par
+out to the controller \par
+I'm doing what needs to be done...\par
+\par
+\par
+\par
+\par
+\par
+5.--------------- LIST OF FILES -----------------\par
+\par
+* AgressiveEnemy.h / .cpp\par
+  an Enemy that chases the player.\par
+\par
+* AIEnemy.h / .cpp\par
+  Base Class for enemies.\par
+\par
+* AIMap.h / .cpp\par
+  Saves location of free tiles and dangers (explosions or explosion areas)\par
+  And gives that information to th AIEnemy. \par
+\par
+* AIMapBFSProxy.h / .cpp\par
+  Proxy for BFS visitor. \par
+\par
+* Animation.h / .cpp\par
+  update  the position of a frame (sf::IntRect) on a texture. \par
+\par
+* AudioManager.h / .cpp\par
+  Singleton that loads and saves audio files. \par
+\par
+* BFSVisitor.h / .cpp\par
+  Derived from BFS Visitor. executes commands on bfs events.\par
+\par
+* Board.h / .cpp\par
+  Holds and controls the game objects.\par
+  \par
+* BoardBuffer.h / .cpp\par
+  Saves changes like removal, addition, and moving objects on the board in each\par
+  game round then updates the board and the AIMap once.\par
+\par
+* BoardProxy.h / .cpp\par
+  Base class for all board proxies. Has methods that mostly the player uses.\par
+\par
+* boardUtils.h / .cpp\par
+  Some utility methods like Manhattan Distance and to ask\par
+  if position a is closer to position c then position b. \par
+\par
+* BomberMan.h / .cpp\par
+  Base class for BomberMan. Player and enemies. \par
+\par
+* BomberManProxy.h / .cpp\par
+  BomberMan gives this to dynamites when he places them on the board\par
+  so that they can tell him they exploded, incrementing it's dynamite count.\par
+\par
+* Bonus.h / .cpp\par
+  Power Ups BomberMan can collect. \par
+\par
+* Button.h / .cpp\par
+  Base class for all buttons. Implements Button common functionality\par
+\par
+* Chronometer.h\par
+  Aux tool from sf::tools tool pack. \par
+\par
+* Controller.h / .cpp\par
+  Controls the flow of the program. \par
+\par
+* ControllerButton.h / .cpp\par
+  Buttons that get ControllerProxy and use it to call methods in the controller.\par
+\par
+* ControllerProxy.h / .cpp\par
+  Encapsulates calls to methods in the controller.\par
+  Also holds the ControllerState enum so that everyone can use it.\par
+\par
+* ControllerStateButton.h / .cpp\par
+  Buttons that change a state in the controller. \par
+\par
+* definitions.h\par
+  general type definitions.\par
+\par
+* Dynamite.h / .cpp\par
+  The bomb. Placed by BomberManon the board, ticks, and then places an explosion. \par
+\par
+* EnemyBoardProxy.h / .cpp\par
+  Derived from BoardProxy. encapsulates calls to board for enemy\par
+  which needs the location of the nearest player, path to the closest position\par
+  to the player and path so a safe position.\par
+\par
+\par
+* ExplodingWall.h / .cpp\par
+  Exploding Walls that can contain a bonus. Explode when hit by explosion\par
+\par
+* Explosion.h / .cpp\par
+  Explosion on a single tile. \par
+\par
+* ExplosionsBoardProxy.h / .cpp\par
+  Let's Dynamites and Explosions put explosions on the board.\par
+\par
+* FlipPageButton.h / .cpp\par
+  Flips a page in the Instruction Pages.\par
+\par
+* FreeTile.h / .cpp\par
+  A Free tile\par
+\par
+* GameClock.h / .cpp\par
+  The game Clock.\par
+\par
+* GameMenu.h / .cpp\par
+  Game Menu. Where the user chooses number of players and number of enemies.\par
+\par
+* GameObject.h / .cpp\par
+  Base class for all game objects.\par
+\par
+* GraphicObjectsManager.h / .cpp\par
+  Singleton that's in charge of loading Textures and preparing Animations\par
+  for objects.\par
+\par
+* GraphicWindow.h / .cpp\par
+  Encapsulates a graphic window. (sf::RenderWindow). \par
+\par
+* InstructionPage.h / .cpp\par
+  The Instruction pages. Derived from menu for the buttons..\par
+\par
+* Level.h / .cpp\par
+  A single level. The level holds the board and updates it \par
+  and displays it in each iteration.\par
+\par
+* LevelBuilder.h / .cpp\par
+  Singleton that reads levels from txt files and builds them.\par
+\par
+* LevelButton.h / .cpp\par
+  Tells the controller which level to load.\par
+\par
+* LevelFileException.h / .cpp\par
+  Exception that is thrown when an error occurred while reading level file. \par
+ \par
+* LevelProxy.h / .cpp\par
+  Level proxy is used to give the time from the game clock. \par
+\par
+* LevelsMenu.h / .cpp\par
+  The menu with level buttons.\par
+\par
+* LevelStatusBar.h / .cpp\par
+  Displays the players status.\par
+\par
+* Logger.h / .cpp\par
+  Singleton that logs error to a log file.  \par
+\par
+* MainMenu.h / .cpp\par
+  The opening menu of the program. \par
+\par
+* Menu.h / .cpp\par
+  Base class for all menus. The menus just set their different buttons\par
+  and background image but they all use the 'run' method of this class.\par
+\par
+* Movable.h / .cpp\par
+  Base class for all objects that use collisions to check the tiles around them.\par
+  Almost all of the operation involved in movement are preformed in this class.\par
+\par
+* MusicButton.h / .cpp\par
+  Button that controls the music. Calls methods in the 'AudioManager' Singleton.\par
+\par
+* NumOfEnemiesButton.h / .cpp\par
+  Tells the controller how many enemies need to be in the level.\par
+\par
+* NumOfPlayersButton.h / .cpp\par
+  Tells the controller how many players need to be in the level.\par
+\par
+* PauseMenu.h / .cpp\par
+  Like Main menu only that play button leads back to the game.\par
+\par
+* Player.h / .cpp\par
+  BomberMan controlled by the player. \par
+\par
+* Posb.h / .cpp\par
+  Position on the board. row and column. \par
+\par
+* returnButton.h / .cpp\par
+  A Button which tells the controller to go back to the previous state.\par
+\par
+* Sprite.h / .cpp\par
+  Encapsulates a Sprite (sf::RectangleShape) in this case. \par
+\par
+* SpritesList.h \par
+  enum that connects between names of textures to the\par
+  vector of textures in GraphicObjectsManager.\par
+\par
+* StoneWall.h / .cpp\par
+  Unpassable barrier. \par
+\par
+* Teleport.h / .cpp\par
+  Teleport. Has a twin.\par
+\par
+* Vertex.h / .cpp\par
+  Wrapper for Boost graph vertex. The private member vertex_d\par
+\par
+\par
+\par
+6.--------------- DATA STRUCTURES -----------------\par
+\par
+* Proxies: BoardProxy\par
+\par
+* Singletons: Logger, LevelBuilder, GraphicObjectManager\par
+\par
+* menus bind keyboard keys to controller states with a map.\par
+\par
+* Double Buffer for updating the board at once.\par
+\par
+\par
+7. --------------- NOTABLE ALGORITHMS -----------------\par
+\par
+* BFS to find the shortest path to a destination \par
+  (or as close to the destination as possible).\par
+\par
+8. ------------------- KNOWN BUGS ---------------------\par
+\par
+* The 'smooth' movement between tiles doesn't work perfectly..\par
+  sometimes it will look like an explosions was supposed to hit a BomberMan\par
+  but actually the bomber man is on a different tile. \par
+  If you look you can see the small offset.. It doesn't happen a lot\par
+\par
+* The enemies are not so smart.. after they spot a danger they go to hide \par
+  and stay in hiding for 3.5 seconds although they could start going in a different \par
+  path but i couldn't make this work.. they would go and explode..\par
+\par
+* Sometimes, the level status bar won't display anything.\par
+  Mostly when you play with one Player.. \par
+  I don't have time to fix this..'\par
+\par
+}
+ 

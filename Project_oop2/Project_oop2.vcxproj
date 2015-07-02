@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AA62B454-65BC-4ED5-8A8F-EC14B6ECFB65}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Project_oop2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-system-d.lib;sfml-system.lib;sfml-window-d.lib;sfml-window.lib;sfml-main-d.lib;sfml-main.lib;sfml-graphics-d.lib;sfml-graphics.lib;sfml-audio-d.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-main.lib;sfml-graphics.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AgressiveEnemy.cpp" />
+    <ClCompile Include="AIEnemy.cpp" />
+    <ClCompile Include="AIMap.cpp" />
+    <ClCompile Include="AIMapBFSProxy.cpp" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
+    <ClCompile Include="BFSVisitor.cpp" />
+    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="BoardBuffer.cpp" />
+    <ClCompile Include="BoardProxy.cpp" />
+    <ClCompile Include="boardUtils.cpp" />
+    <ClCompile Include="BomberMan.cpp" />
+    <ClCompile Include="BomberManProxy.cpp" />
+    <ClCompile Include="Bonus.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="ControllerButton.cpp" />
+    <ClCompile Include="ControllerProxy.cpp" />
+    <ClCompile Include="ControllerStateButton.cpp" />
+    <ClCompile Include="Dynamite.cpp" />
+    <ClCompile Include="EnemyBoardProxy.cpp" />
+    <ClCompile Include="ExplodingWall.cpp" />
+    <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="ExplosionsBoardProxy.cpp" />
+    <ClCompile Include="FlipPageButton.cpp" />
+    <ClCompile Include="FreeTile.cpp" />
+    <ClCompile Include="GameClock.cpp" />
+    <ClCompile Include="GameMenu.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GraphicObjectsManager.cpp" />
+    <ClCompile Include="GraphicWindow.cpp" />
+    <ClCompile Include="InstructionPage.cpp" />
+    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelBuilder.cpp" />
+    <ClCompile Include="LevelButton.cpp" />
+    <ClCompile Include="LevelFileException.cpp" />
+    <ClCompile Include="LevelProxy.cpp" />
+    <ClCompile Include="LevelsMenu.cpp" />
+    <ClCompile Include="LevelStatusBar.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Movable.cpp" />
+    <ClCompile Include="MusicButton.cpp" />
+    <ClCompile Include="NumOfEnemiesButton.cpp" />
+    <ClCompile Include="NumOfPlayersButton.cpp" />
+    <ClCompile Include="PauseMenu.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Posb.cpp" />
+    <ClCompile Include="returnButton.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="StoneWall.cpp" />
+    <ClCompile Include="Teleport.cpp" />
+    <ClCompile Include="Vertex.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AgressiveEnemy.h" />
+    <ClInclude Include="AIEnemy.h" />
+    <ClInclude Include="AIMap.h" />
+    <ClInclude Include="AIMapBFSProxy.h" />
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AudioManager.h" />
+    <ClInclude Include="BFSVisitor.h" />
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="BoardBuffer.h" />
+    <ClInclude Include="BoardProxy.h" />
+    <ClInclude Include="boardUtils.h" />
+    <ClInclude Include="BomberMan.h" />
+    <ClInclude Include="BomberManProxy.h" />
+    <ClInclude Include="Bonus.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Chronometer.h" />
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="ControllerButton.h" />
+    <ClInclude Include="ControllerProxy.h" />
+    <ClInclude Include="ControllerStateButton.h" />
+    <ClInclude Include="definitions.h" />
+    <ClInclude Include="Dynamite.h" />
+    <ClInclude Include="EnemyBoardProxy.h" />
+    <ClInclude Include="ExplodingWall.h" />
+    <ClInclude Include="Explosion.h" />
+    <ClInclude Include="ExplosionsBoardProxy.h" />
+    <ClInclude Include="FlipPageButton.h" />
+    <ClInclude Include="FreeTile.h" />
+    <ClInclude Include="GameClock.h" />
+    <ClInclude Include="GameMenu.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GraphicObjectsManager.h" />
+    <ClInclude Include="GraphicWindow.h" />
+    <ClInclude Include="InstructionPage.h" />
+    <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelBuilder.h" />
+    <ClInclude Include="LevelButton.h" />
+    <ClInclude Include="LevelFileException.h" />
+    <ClInclude Include="LevelProxy.h" />
+    <ClInclude Include="LevelsMenu.h" />
+    <ClInclude Include="LevelStatusBar.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Movable.h" />
+    <ClInclude Include="MusicButton.h" />
+    <ClInclude Include="NumOfEnemiesButton.h" />
+    <ClInclude Include="NumOfPlayersButton.h" />
+    <ClInclude Include="PauseMenu.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Posb.h" />
+    <ClInclude Include="returnButton.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpritesList.h" />
+    <ClInclude Include="StoneWall.h" />
+    <ClInclude Include="Teleport.h" />
+    <ClInclude Include="Vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\README.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
