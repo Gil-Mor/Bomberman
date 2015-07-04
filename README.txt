@@ -6,8 +6,8 @@ Gil Mor גיל מור 300581030
 
 3.-------------- THE PROJECT - GAME RULES -----------------
 
-The game is Playing With Fire.
-Can be played here - http://www.playingwithfiregame2.com/
+The game is BomberMan. A version called Playing With Fire is available online.
+http://www.playingwithfiregame2.com/
 
 * The goal is to blow the enemies up before they blow you.
 
@@ -15,7 +15,7 @@ Can be played here - http://www.playingwithfiregame2.com/
   but can be set in the level file.
 
 * The user can choose to play with one or 2 players against 0 to 3 AI enemies.
-  You can't play 2 players and 3 enemies because all BomberMan need
+  You can't play 2 players and 3 enemies because all BomberMen need
   to be placed in the corners.
 
 * Each BomberMan has a health meter. Every time it explodes it's health decreases.
@@ -30,11 +30,7 @@ Can be played here - http://www.playingwithfiregame2.com/
 * There won't be a saving option but there is a pause state.
 
 * Dynamites can also be teleported and their explosion also affects
-  whats inside the teleport.
-
-* Objects can be teleported once every few seconds. not twice on a row.
-
-
+  what's inside the teleport.
 
 
 --- BONUS TILES ---
