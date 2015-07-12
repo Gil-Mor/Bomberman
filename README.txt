@@ -4,57 +4,16 @@
 Ex5 OOP2 - Project
 Gil Mor גיל מור 300581030
 
-3.-------------- THE PROJECT - GAME RULES -----------------
+3.-------------- THE PROJECT -----------------
 
-The game is Playing With Fire.
-Can be played here - http://www.playingwithfiregame2.com/
+Remaking the BomberMan game using OOP approach.
 
-* The goal is to blow the enemies up before they blow you.
-
-* There's a time limit for every level which is set to 3 minutes by default
-  but can be set in the level file.
-
-* The user can choose to play with one or 2 players against 0 to 3 AI enemies.
-  You can't play 2 players and 3 enemies because all BomberMan need
-  to be placed in the corners.
-
-* Each BomberMan has a health meter. Every time it explodes it's health decreases.
-  After 3 hits he's dead but there's a bonus health tile. 
-
-* BomberMan can place 1 dynamite at a time but there is a bonus that lets you place more..
-
-* Dynamites blow up people and barrels but don't blow walls, other dynamites or bonuses.
-
-* Some of the barrels contain bonus tiles.
-
-* There won't be a saving option but there is a pause state.
-
-* Dynamites can also be teleported and their explosion also affects
-  whats inside the teleport.
-
-* Objects can be teleported once every few seconds. not twice on a row.
+A version called 'Playing with fire' is available online.
+http://www.playingwithfiregame2.com/
 
 
+----- Creating Your Own Level ------
 
-
---- BONUS TILES ---
-
-*** Bonus Tiles will always be hidden inside the barrels at the beginning of the level.
-
-*** With some Tiles, If you take multiple tiles their affect on you increases.
-
-* health tile - increases health by 33% percent. The maximum is 166%.
-
-* Increase Explosion Radius - with each one of these your Dynamites explosion radius
-  increases in three tiles in every direction. 
-  Dynamite explosion can reach the end of the level..
-
-* Run faster - you can take two of these, each one makes you run faster.
-
-* Kickabilty - allows the BomberMan to kick a dynamite. 
-
-
------ BUILDING A LEVEL ------
 Look at the levels in levels folder. 
 The level have to be surrounded with walls '#'.
 The Bomberman will be placed in the corners so you need to put placeholders '*'
@@ -86,7 +45,7 @@ NOTE: Like in all versions of the game i played.. If the board is not in the sha
 
 
 
-4.--------------- DESIGN -----------------
+4.--------------- OBECT ORIENTED DESIGN -----------------
 
 --- Controller ---
 Controls the flow of the program by switching states. 
