@@ -73,7 +73,7 @@ void AgressiveEnemy::update()
                     }
 
                     goToAttackState();
-
+                    break;
                 }
 
                 case RUNAWAY_S:
