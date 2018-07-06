@@ -45,7 +45,7 @@ NOTE: Like in all versions of the game i played.. If the board is not in the sha
 
 
 
-4.--------------- OBECT ORIENTED DESIGN -----------------
+4.--------------- OBJECT ORIENTED DESIGN -----------------
 
 --- Controller ---
 Controls the flow of the program by switching states. 
@@ -239,9 +239,6 @@ initialize it's own proxies..
 If I want to be able to show the instruction page when pausing it means going 
 out to the controller 
 I'm doing what needs to be done...
-
-
-
 
 
 5.--------------- LIST OF FILES -----------------
@@ -448,17 +445,3 @@ I'm doing what needs to be done...
 * BFS to find the shortest path to a destination 
   (or as close to the destination as possible).
 
-8. ------------------- KNOWN BUGS ---------------------
-
-* The 'smooth' movement between tiles doesn't work perfectly..
-  sometimes it will look like an explosions was supposed to hit a BomberMan
-  but actually the bomber man is on a different tile. 
-  If you look you can see the small offset.. It doesn't happen a lot
-
-* The enemies are not so smart.. after they spot a danger they go to hide 
-  and stay in hiding for 3.5 seconds although they could start going in a different 
-  path but i couldn't make this work.. they would go and explode..
-
-* Sometimes, the level status bar won't display anything.
-  Mostly when you play with one Player.. 
-  I don't have time to fix this..'
