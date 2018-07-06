@@ -1,18 +1,8 @@
-﻿1.----------- README ----------------
+I've recreated the [BomberMan](https://en.wikipedia.org/wiki/Bomberman) game with C++, [boost](https://www.boost.org/), and [SFML](https://www.sfml-dev.org) lib.
 
-2. ---------- STUDENT --------------- 
-Ex5 OOP2 - Project
-Gil Mor גיל מור 300581030
+Here's a Demo of the final result [Demo](https://www.youtube.com/watch?v=OxSsXRgE7nM)
 
-3.-------------- THE PROJECT -----------------
-
-Remaking the BomberMan game using OOP approach.
-
-A version called 'Playing with fire' is available online.
-http://www.playingwithfiregame2.com/
-
-
------ Creating Your Own Level ------
+----- Hot to Create Your Own Level ------
 
 Look at the levels in levels folder. 
 The level have to be surrounded with walls '#'.
@@ -45,7 +35,7 @@ NOTE: Like in all versions of the game i played.. If the board is not in the sha
 
 
 
-4.--------------- OBJECT ORIENTED DESIGN -----------------
+--------------- OBJECT ORIENTED DESIGN -----------------
 
 --- Controller ---
 Controls the flow of the program by switching states. 
@@ -241,7 +231,7 @@ out to the controller
 I'm doing what needs to be done...
 
 
-5.--------------- LIST OF FILES -----------------
+--------------- LIST OF FILES -----------------
 
 * AgressiveEnemy.h / .cpp
   an Enemy that chases the player.
@@ -429,7 +419,7 @@ I'm doing what needs to be done...
 
 
 
-6.--------------- DATA STRUCTURES -----------------
+--------------- DATA STRUCTURES -----------------
 
 * Proxies: BoardProxy
 
@@ -440,7 +430,7 @@ I'm doing what needs to be done...
 * Double Buffer for updating the board at once.
 
 
-7. --------------- NOTABLE ALGORITHMS -----------------
+--------------- NOTABLE ALGORITHMS -----------------
 
 * BFS to find the shortest path to a destination 
   (or as close to the destination as possible).
