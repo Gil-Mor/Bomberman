@@ -1,4 +1,4 @@
-I've recreated the [BomberMan](https://en.wikipedia.org/wiki/Bomberman) game with C++, [boost](https://www.boost.org/), and [SFML](https://www.sfml-dev.org) lib.
+I've recreated the [BomberMan] (https://en.wikipedia.org/wiki/Bomberman) game with C++, [boost](https://www.boost.org/), and [SFML](https://www.sfml-dev.org) lib.
 
 Here's a Demo of the final result [Demo](https://www.youtube.com/watch?v=OxSsXRgE7nM)
 
