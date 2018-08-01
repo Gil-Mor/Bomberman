@@ -2,7 +2,7 @@ I've recreated the [BomberMan](https://en.wikipedia.org/wiki/Bomberman) game wit
 
 Here's a Demo of the final result [Demo](https://www.youtube.com/watch?v=OxSsXRgE7nM)
 
------ Hot to Create Your Own Level ------
+----- How to create your own level ------
 
 Look at the levels in levels folder. 
 The level have to be surrounded with walls '#'.
