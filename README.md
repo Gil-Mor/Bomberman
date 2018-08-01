@@ -2,38 +2,6 @@ I've recreated the [BomberMan](https://en.wikipedia.org/wiki/Bomberman) game wit
 
 Here's a Demo of the final result [Demo](https://www.youtube.com/watch?v=OxSsXRgE7nM)
 
------ How to create your own level ------
-
-Look at the levels in levels folder. 
-The level have to be surrounded with walls '#'.
-The Bomberman will be placed in the corners so you need to put placeholders '*'
-in the corners. Barrels are placed randomly so the place holder makes sure that
-there wont be a barrel there..
-Place teleports with 'x' (lower case) and put a single digit somewhere around it.
-The digit is the teleport's ID. Put the same digit around that teleport twin.
-You can specify the time given to the level by writing 
-'time' and the time in seconds you give to win this board.
-The default time now is 3 minutes.
-Give the file some name in add it to the 'levels.txt' file.
-
-Actually... There is a button for every level so in order to add
-a level you need to add a button but you just replace one of the files
-level1, level2, .. level4 and then look for the button that loads this level..
-
-The Level buttons order is:
-top left: level2
-top right: level 3
-bottom left: level1
-bottom right level4
-
-NOTE: Like in all versions of the game i played.. If the board is not in the shape of
-      # # # # ... # meaning wall space wall space, There's a chance the enemies
-      will be stuck because the dynamites they'll place won't hit any barrels.
-      You can make different levels but just make sure you dont have ### 3 walls
-      without a space.
-
-
-
 
 --------------- OBJECT ORIENTED DESIGN -----------------
 
@@ -434,4 +402,36 @@ I'm doing what needs to be done...
 
 * BFS to find the shortest path to a destination 
   (or as close to the destination as possible).
+  
+-------------- CREATE YOUR OWN LEVEL ---------------
+
+Look at the levels in 'levels' folder. 
+The level have to be surrounded with walls '#'.
+The Bomberman will be placed in the corners and the Barrles are placed randomly so you need to put placeholders '*' in the corners to avoid collisions.
+Place teleports with 'x' (lower case) and put a single digit somewhere around it.
+The digit is the teleport's ID. Put the same digit around that teleport 'twin'.
+You can specify the time given to the level by writing 
+'time' and the time in seconds you give to win this board.
+The default time is 3 minutes.
+Give the file some name and add it to the 'levels.txt' file.
+
+Actually... There is a button for every level so in order to add
+a level you need to add a button but you just replace one of the files
+level1, level2, .. level4 and then look for the button that loads this level..
+
+The Level buttons order is:
+top left: level2
+top right: level 3
+bottom left: level1
+bottom right level4
+
+NOTE: Like in all versions of the game i played.. If the board is not in the shape of
+      # # # # ... # meaning wall space wall space, There's a chance the enemies
+      will be stuck because the dynamites they'll place won't hit any barrels.
+      You can make different levels but just make sure you dont have ### 3 walls
+      without a space.
+
+
+
+
 
