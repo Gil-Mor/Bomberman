@@ -16,7 +16,7 @@ const float EXPLOSION_DURATION = 1;
 //static
 //Explosion::AnimationInfo Explosion::_animation;
 
-Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color& color,
+Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color,
     ExplosionsBoardProxy& explosionProxy)
     : Movable(posf, posb), _radius(radius), _explosionProxy(explosionProxy)
 {
@@ -28,7 +28,7 @@ Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color& colo
 
 
 // private ctor
-Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color& color,
+Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color,
     Movable::Direction dir, ExplosionsBoardProxy& explosionProxy)
     : Movable(posf, posb), _radius(radius), _explosionProxy(explosionProxy)
 {

@@ -17,7 +17,7 @@ class Explosion : public Movable
 public:
 
     // The dynamite uses this 
-    Explosion(const Posf& posf, const Posb& posb, int radius, Color& color, 
+    Explosion(const Posf& posf, const Posb& posb, int radius, Color color, 
         ExplosionsBoardProxy& explosionProxy);
 
 
@@ -67,7 +67,7 @@ private:
     // only an explosion can create another explosion. 
     // The first explosion will create 4 different explosions
     // the rest of them 
-    Explosion(const Posf& posf, const Posb& posb, int radius, Color& color, 
+    Explosion(const Posf& posf, const Posb& posb, int radius, Color color, 
         Movable::Direction dir, ExplosionsBoardProxy& explosionProxy);
 
     //Posb getNextTile() const;

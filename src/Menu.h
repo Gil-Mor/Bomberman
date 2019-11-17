@@ -6,15 +6,13 @@
 */
 #include <memory>
 #include <vector>
+#include "ControllerProxy.h"
 #include "definitions.h"
 #include "Sprite.h"
 #include "Button.h"
 #include <unordered_map>
 
 class ControllerProxy;
-
-
-enum ControllerState;
 
 class GraphicWindow;
 

@@ -5,16 +5,15 @@ Initializing every vertex predecessor to null.
 When discovering a 'tree edge', sets it's predecessor. 
 'tree edges' are the edges that form the shortest path between vertices on the board.*/
 
-
+#include "AIMapBFSProxy.h"
 #include "definitions.h"
 #include <boost/graph/breadth_first_search.hpp>
-class AIMapBFSProxy;
 
 class BFSVisitor : public boost::default_bfs_visitor
 {
 public:
 
-    BFSVisitor(AIMapBFSProxy& mapProxy);
+    BFSVisitor(AIMapBFSProxy mapProxy);
 
     void initializeVertex(const vertex_d& d);
 
@@ -55,7 +54,7 @@ private:
     // true while _stopCondition wasn't fulfilled. 
     // when false. bfswill stop to add vertices to the path.
     bool _keepBuildingPath = true;
-    AIMapBFSProxy& _mapProxy;
+    AIMapBFSProxy _mapProxy;
 
 };
 

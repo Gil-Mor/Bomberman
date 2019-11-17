@@ -2,12 +2,10 @@
 /*
   Buttons that change a state in the controller. 
 */
+#include "ControllerProxy.h"
 #include "ControllerButton.h"
 
 class ControllerProxy;
-
-enum ControllerState;
-
 
 class ControllerStateButton : public ControllerButton
 {

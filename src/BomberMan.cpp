@@ -91,8 +91,8 @@ void BomberMan::placeDynamite(BoardProxy& board)
 {
     if (_availbleDynamites > 0)
     {
-        board.placeDynamite(dynamite_up(new Dynamite(_posf, _posb, _explosionRadius, _sprite.getColor(),
-            _bomberManProxy, _boardProxy->getExplosionProxy())));
+        board.placeDynamite(std::move(dynamite_up(new Dynamite(_posf, _posb, _explosionRadius, _sprite.getColor(),
+            _bomberManProxy, _boardProxy->getExplosionProxy()))));
         --_availbleDynamites;
     }
 }

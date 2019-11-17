@@ -1,6 +1,8 @@
 #pragma once
 /* Proxy for BFS visitor. The BFS Visitor needs to check the stop condition in the map
 and save the result. */
+
+#include "AIMap.h"
 #include "definitions.h"
 
 class AIMap;

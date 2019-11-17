@@ -43,7 +43,7 @@ void BoardProxy::removeBonus(Bonus* bonus)
     _board.removeBonus(bonus);
 }
 
-void BoardProxy::placeBonus(bonus_up& bonus)
+void BoardProxy::placeBonus(bonus_up bonus)
 {
     _board.placeBonus(std::move(bonus));
 }
@@ -53,7 +53,7 @@ float BoardProxy::getElapsedTimeAsSeconds() const
     return getElapsedTime().asSeconds();
 }
 
-void BoardProxy::placeDynamite(dynamite_up& dynamite)
+void BoardProxy::placeDynamite(dynamite_up dynamite)
 {
     _board.placeDynamite(std::move(dynamite));
 }

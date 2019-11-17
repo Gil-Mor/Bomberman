@@ -13,7 +13,7 @@
 
 const float TICKING_TIME = 2;
 
-Dynamite::Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Color& color, 
+Dynamite::Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Color color, 
     BomberManProxy& owner, ExplosionsBoardProxy& explosionProxy)
     : Movable(posf, posb), _radius(radius), _owner(owner), _dynamiteProxy(explosionProxy)
 {

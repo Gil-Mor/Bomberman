@@ -16,7 +16,7 @@ class Dynamite : public Movable
 {
 public:
 
-    Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Color& color, 
+    Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Color color, 
         BomberManProxy& owner, ExplosionsBoardProxy& explosionProxy);
 
     //void setDynamiteProxy(ExplosionsBoardProxy* board);

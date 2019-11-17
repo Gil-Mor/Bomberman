@@ -1,8 +1,7 @@
 #include "BFSVisitor.h"
-#include "AIMapBFSProxy.h"
 
 
-BFSVisitor::BFSVisitor(AIMapBFSProxy& map)
+BFSVisitor::BFSVisitor(AIMapBFSProxy map)
     :_mapProxy(map)
 {}
 

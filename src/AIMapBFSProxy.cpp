@@ -1,5 +1,4 @@
 #include "AIMapBFSProxy.h"
-#include "AIMap.h"
 
 AIMapBFSProxy::AIMapBFSProxy(AIMap& map, BfsStopCondition stopCondition)
     : _map(map), _stopCondition(stopCondition)

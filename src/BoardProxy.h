@@ -33,8 +33,8 @@ public:
     void removeExplodingWall(ExplodingWall* wall);
     void removeBonus(Bonus* bonus);
 
-    void placeBonus(bonus_up& bonus);
-    void placeDynamite(dynamite_up& dynamite);
+    void placeBonus(bonus_up bonus);
+    void placeDynamite(dynamite_up dynamite);
 
     sf::Time getElapsedTime() const;
 

@@ -58,7 +58,7 @@ void ExplodingWall::update()
         if (_boardProxy->getElapsedTimeAsSeconds() - _explosion.timeOfExplosion >= EXPLOSION_DURATION)
         {
             if (_bonusType != Bonus::BonusType::NONE) {
-                _boardProxy->placeBonus(bonus_up(new Bonus (_posf, _posb, _bonusType)));
+                _boardProxy->placeBonus(std::move(bonus_up(new Bonus (_posf, _posb, _bonusType))));
 
             }
 

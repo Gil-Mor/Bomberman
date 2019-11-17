@@ -73,9 +73,9 @@ Path AIMap::pathToDestination(const Posb& source, const Posb& dest)
     _path.result = _path.source;
     _path.target = dest;
 
-
+   
     boost::breadth_first_search(_graph, _path.source->getDescriptor(),
-        visitor(BFSVisitor(AIMapBFSProxy(*this, DESTINATION_C))));
+        boost::visitor(BFSVisitor(AIMapBFSProxy(*this, DESTINATION_C))));
 
 
 
@@ -106,7 +106,7 @@ Path AIMap::pathToSaftey(const Posb& source)
 
 
     boost::breadth_first_search(_graph, _path.source->getDescriptor(),
-        visitor(BFSVisitor(AIMapBFSProxy(*this, SAFE_C))));
+        boost::visitor(BFSVisitor(AIMapBFSProxy(*this, SAFE_C))));
 
 
     Vertex* traveler = _path.result;
