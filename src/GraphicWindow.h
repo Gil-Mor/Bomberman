@@ -11,7 +11,7 @@ more features like poll event and mapCoordsToPixels..
 
 
 class Sprite;
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "definitions.h"
 
 class GraphicWindow

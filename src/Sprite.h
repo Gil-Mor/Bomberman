@@ -9,7 +9,7 @@ we can almost not change anything else in the code.
 sf::RectangleShape is only used for heavier stuff like getTextureRect..
 
 */
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "SpritesList.h"
 #include "definitions.h" 
 

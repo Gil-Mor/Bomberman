@@ -7,7 +7,7 @@ When discovering a 'tree edge', sets it's predecessor.
 
 
 #include "definitions.h"
-#include <boost\graph\breadth_first_search.hpp>
+#include <boost/graph/breadth_first_search.hpp>
 class AIMapBFSProxy;
 
 class BFSVisitor : public boost::default_bfs_visitor

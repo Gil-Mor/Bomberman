@@ -3,7 +3,7 @@
 Position on the board. row and column. 
 */
 
-#include <ostream>;
+#include <ostream>
 
 class Posb
 {

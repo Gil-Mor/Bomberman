@@ -48,7 +48,7 @@ private:
     // for when playing 2 players. the number of the player.
     size_t _playerNum;
 
-    bool Player::movementKey(sf::Keyboard::Key key) const;
+    bool movementKey(sf::Keyboard::Key key) const;
 
     Movable::Direction keyToDirection(sf::Keyboard::Key key) const;
 

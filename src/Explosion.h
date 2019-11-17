@@ -62,7 +62,7 @@ private:
 
     float _explosionTime = 0;
 
-    bool Explosion::stillPropagate() const;
+    bool stillPropagate() const;
 
     // only an explosion can create another explosion. 
     // The first explosion will create 4 different explosions

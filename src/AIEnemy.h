@@ -92,6 +92,6 @@ protected:
 
     // in danger means standing on potential explosion
     bool inDanger() const;
-    bool AIEnemy::dangerousPos(const Posb& pos, DangerType danger) const;
+    bool dangerousPos(const Posb& pos, DangerType danger) const;
 };
 

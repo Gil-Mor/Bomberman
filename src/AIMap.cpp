@@ -1,7 +1,7 @@
 #include "AIMap.h"
 #include "Dynamite.h"
 #include "Explosion.h"
-#include <boost\graph\breadth_first_search.hpp>
+#include <boost/graph/breadth_first_search.hpp>
 #include "AIMapBFSProxy.h"
 #include "BFSVisitor.h"
 #include "boardUtils.h"

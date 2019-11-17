@@ -3,7 +3,7 @@
   general type definitions.
 */
 #include <string>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
 #include <deque>
@@ -11,8 +11,8 @@
 #include <list>
 #include "Posb.h"
 
-#include <boost\graph\adjacency_list.hpp>
-#include <boost\graph\graph_traits.hpp>
+#include <boost/graph/adjacency_list.hpp>
+#include <boost/graph/graph_traits.hpp>
 
 using std::list;
 using std::forward_list;
@@ -77,12 +77,6 @@ typedef vector<vector<Posf> > PosfMap;
 //typedef unique_ptr<Vertex> vertex_up;
 
 typedef vector< deque< bool> > FreeTilesMap;
-
-
-//typedef bool(AIMap::*bfsStopCondition)(const vertex_d& d);
-
-//typedef vector< vector<vertex_up> > AIMap;
-
 
 typedef unique_ptr<Bonus> bonus_up;
 

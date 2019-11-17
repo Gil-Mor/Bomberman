@@ -5,7 +5,7 @@ and sf::Music. The Game Objects get their sounds from here but sound track
 is played from here directly. 
 Very Useful if we want to turn off all FX.. we just mute them from here.*/
 
-#include <SFML\Audio.hpp>
+#include <SFML/Audio.hpp>
 #include <vector>
 #include <memory>
 

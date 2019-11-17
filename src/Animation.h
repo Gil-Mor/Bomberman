@@ -1,6 +1,6 @@
 #pragma once
 /* update  the position of a frame (sf::IntRect) on a texture. */
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "GameClock.h"
 
 

@@ -3,7 +3,7 @@
 /* Singleton that's in charge of loading Textures and preparing Animations
 for objects. */
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
 #include "Sprite.h"

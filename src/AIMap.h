@@ -55,7 +55,7 @@ public:
 
 
     // called from buffer.
-    void AIMap::setTileTypeToFree(const Posb& pos);
+    void setTileTypeToFree(const Posb& pos);
 
 
     bool dangerPos(const Posb& pos, DangerType danger) const;
@@ -103,17 +103,17 @@ private:
     Graph _graph;
     MapDescriptorsToPos _d2pMap;
 
-    void AIMap::addEdge(const Vertex& a, const Vertex& b);
+    void addEdge(const Vertex& a, const Vertex& b);
 
     // called from setTileToFree
     void updateVertexNeighbors(const Posb& vertex);
 
 
-    bool AIMap::validPos(int i, int j) const;
-    bool AIMap::validPos(const Posb& pos) const;
+    bool validPos(int i, int j) const;
+    bool validPos(const Posb& pos) const;
 
 
-    Vertex* AIMap::descriptorToVertex(const vertex_d& d);
+    Vertex* descriptorToVertex(const vertex_d& d);
 
 };
 

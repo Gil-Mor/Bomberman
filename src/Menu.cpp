@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 #include "ControllerProxy.h"
 #include "GraphicWindow.h"
 #include "Button.h"

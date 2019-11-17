@@ -52,7 +52,7 @@ public:
     // dynamites let the bomberman know that they exploded.
     void dynamiteExploded();
 
-    BomberMan::State getState() const;
+    State getState() const;
 
     // ----------- DOUBLE DISPATCH ------------
     virtual void colide(GameObject& other) override;
@@ -112,7 +112,7 @@ protected:
     }_hit; 
 
 
-    BomberMan::Animations getAnimationFromDirection();
+    Animations getAnimationFromDirection();
 
     GameSound_p _hitSound;
 

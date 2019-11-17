@@ -13,7 +13,7 @@ public:
 
 protected:
 
-    void AgressiveEnemy::updateState();
+    void updateState();
 
     bool agressiveTimeToMove();
 
