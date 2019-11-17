@@ -1,10 +1,9 @@
 #pragma once
 
 /*Let's Dynamites and Explosions put explosions on the board.
-only they can place explosions on th board.just a security so that 
+only they can place explosions on th board.just a security so that
 BomberMan won't place an explosion instead of a dynamite.
 */
-
 
 #include "BoardProxy.h"
 
@@ -13,7 +12,6 @@ class Explosion;
 class ExplosionsBoardProxy : public BoardProxy
 {
 public:
-
     ExplosionsBoardProxy(Board& board);
 
     ~ExplosionsBoardProxy();
@@ -23,6 +21,4 @@ public:
     void removeDynamiteFromBoard(Dynamite* dynamite);
 
     void removeExplosionFromBoard(Explosion* dynamite);
-
 };
-

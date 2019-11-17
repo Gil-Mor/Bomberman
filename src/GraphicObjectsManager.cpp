@@ -15,8 +15,6 @@ const std::string GAME_OBJECTS_DIR = "../img/objects/";
 const std::string LEVEL_TEX_DIR = "../img/levelTex/";
 const std::string INSTRUCTIONS_DIR = "../img/instructions/";
 
-
-
 const std::string MENUS_DIR = "../img/menus/";
 
 GraphicObjectsManager::GraphicObjectsManager()
@@ -24,7 +22,6 @@ GraphicObjectsManager::GraphicObjectsManager()
     loadTextures();
     _font.loadFromFile(ORBITRON_FONT);
     setAnimations();
-
 }
 
 const sf::Font& GraphicObjectsManager::getOrbitronFont() const
@@ -34,8 +31,7 @@ const sf::Font& GraphicObjectsManager::getOrbitronFont() const
 
 void GraphicObjectsManager::loadTextures()
 {
-    try
-    {
+    try {
         _textures.resize(NUM_OF_TEXTURES);
 
         // fill with Texture objects.
@@ -61,25 +57,14 @@ void GraphicObjectsManager::loadTextures()
 
         _textures[TELEPORT_T]->loadFromFile(GAME_OBJECTS_DIR + "teleport.png");
 
-
-
-
-
         _textures[LEVEL_BACKGROUND_T]->loadFromFile(LEVEL_TEX_DIR + "levelBG.jpg");
         _textures[WIN_SCREEN_T]->loadFromFile(LEVEL_TEX_DIR + "winScreen.jpg");
         _textures[LOSE_SCREEN_T]->loadFromFile(LEVEL_TEX_DIR + "loseScreen.png");
-
-
-
 
         _textures[LEVEL_1_BUTTON_T]->loadFromFile(MENUS_DIR + "level1Button.jpg");
         _textures[LEVEL_2_BUTTON_T]->loadFromFile(MENUS_DIR + "level2Button.jpg");
         _textures[LEVEL_3_BUTTON_T]->loadFromFile(MENUS_DIR + "level3Button.jpg");
         _textures[LEVEL_4_BUTTON_T]->loadFromFile(MENUS_DIR + "level4Button.jpg");
-
-
-
-
 
         _textures[PLAY_BUTTON_T]->loadFromFile(MENUS_DIR + "playButton.png");
         _textures[EXIT_BUTTON_T]->loadFromFile(MENUS_DIR + "exitButton.png");
@@ -89,8 +74,6 @@ void GraphicObjectsManager::loadTextures()
         _textures[FLIP_NEXT_BUTTON_T]->loadFromFile(MENUS_DIR + "flipNextButton.png");
         _textures[FLIP_BACK_BUTTON_T]->loadFromFile(MENUS_DIR + "flipBackButton.png");
         _textures[RETURN_BUTTON_T]->loadFromFile(MENUS_DIR + "returnButton.png");
-
-
 
         _textures[ONE_PLAYER_BUTTON_T]->loadFromFile(MENUS_DIR + "1PlayerButton.png");
         _textures[TWO_PLAYER_BUTTON_T]->loadFromFile(MENUS_DIR + "2PlayersButton.png");
@@ -105,10 +88,7 @@ void GraphicObjectsManager::loadTextures()
         _textures[FX_ON_BUTTON_T]->loadFromFile(MENUS_DIR + "FXonButton.png");
         _textures[FX_OFF_BUTTON_T]->loadFromFile(MENUS_DIR + "FXoffButton.png");
 
-
-           
         // ------------- load instruction pages -------------------
-
 
         _textures[INSTRUCTION_PAGE_1_T]->loadFromFile(INSTRUCTIONS_DIR + "instructionPage1.jpg");
         _textures[INSTRUCTION_PAGE_2_T]->loadFromFile(INSTRUCTIONS_DIR + "instructionPage2.jpg");
@@ -116,20 +96,15 @@ void GraphicObjectsManager::loadTextures()
         _textures[INSTRUCTION_PAGE_4_T]->loadFromFile(INSTRUCTIONS_DIR + "instructionPage4.jpg");
         _textures[INSTRUCTION_PAGE_5_T]->loadFromFile(INSTRUCTIONS_DIR + "instructionPage5.jpg");
 
-
-    }
-    catch (std::exception& e)
-    {
+    } catch (std::exception& e) {
         Logger::getInstance().log("error loading Textures.");
         throw;
     }
-
 }
 
 void GraphicObjectsManager::setAnimations()
 {
     {
-
         _bomberManAnimations.resize(BomberMan::Animations::NUM_OF_BOMBERMAN_ANIMATIONS);
 
         _bomberManAnimations[BomberMan::Animations::DOWN_A] = Animation(sf::IntRect(0, 0, 24, 20), 3);
@@ -142,7 +117,6 @@ void GraphicObjectsManager::setAnimations()
 
         _bomberManAnimations[BomberMan::Animations::EXPLODING_A] = Animation(sf::IntRect(288, 0, 24, 20), 8);
     }
-
 
     {
         _explodingWallAnimation = Animation(sf::IntRect(0, 0, 63, 60), 4);
@@ -160,13 +134,8 @@ void GraphicObjectsManager::setAnimations()
         _teleportAnimations.resize(Teleport::NUM_OF_ANIMATIONS_A);
         _teleportAnimations[Teleport::Animations::REST_A] = Animation(sf::IntRect(0, 0, 96, 103), 4);
         _teleportAnimations[Teleport::Animations::ACTIVE_A] = Animation(sf::IntRect(0, 130, 96, 103), 8);
-
     }
-
-
-
 }
-
 
 const vector<Animation>& GraphicObjectsManager::getBomberManAnimations() const
 {
@@ -183,8 +152,6 @@ const vector<Animation>& GraphicObjectsManager::getTeleportAnimation() const
     return _teleportAnimations;
 }
 
-
-
 const Animation& GraphicObjectsManager::getDynamiteAnimation() const
 {
     return _dynamiteAnimation;
@@ -199,7 +166,6 @@ sf::Texture* GraphicObjectsManager::getTexture(const Textures& tex)
 {
     return _textures[tex].get();
 }
-
 
 GraphicObjectsManager& GraphicObjectsManager::getInstance()
 {

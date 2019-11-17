@@ -2,20 +2,18 @@
 
 #include "Controller.h"
 #include "Logger.h"
-#include "definitions.h"  // for font
+#include "definitions.h" // for font
 #include <string>
 #include "GraphicObjectsManager.h"
 #include "GraphicWindow.h"
 
 void showErrorMessage(const string& message);
 
-int main() try
-{
+int main() try {
     try {
         Controller c;
         c.run();
-    }
-    catch (std::exception& e) {
+    } catch (std::exception& e) {
         showErrorMessage("Unexpected error!\nExiting.\n");
         throw;
     }
@@ -40,7 +38,7 @@ void showErrorMessage(const string& message)
 
     text.setFont(font);
 
-    text.setColor(sf::Color::Blue);
+    text.setFillColor(sf::Color::Blue);
 
     text.setString(message);
 
@@ -53,10 +51,9 @@ void showErrorMessage(const string& message)
     textSize = text.getGlobalBounds();
 
     // make the center of text it's origin.
-    center = { textSize.width / 2.f, textSize.height / 2.f };
+    center = {textSize.width / 2.f, textSize.height / 2.f};
 
     text.setOrigin(center);
-
 
     window.draw(text);
 
@@ -64,12 +61,9 @@ void showErrorMessage(const string& message)
 
     sf::Event event;
 
-    while (true)
-    {
-        while (window.getWindow().pollEvent(event))
-        {
-            switch (event.type)
-            {
+    while (true) {
+        while (window.getWindow().pollEvent(event)) {
+            switch (event.type) {
                 case sf::Event::Closed:
                 case sf::Event::KeyPressed:
                 case sf::Event::MouseButtonPressed:

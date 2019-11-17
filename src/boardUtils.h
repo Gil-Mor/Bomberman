@@ -1,6 +1,6 @@
 #pragma once
 /* Some utility methods like Manhattan Distance and to ask
-if position a is closer to position c then position b. 
+if position a is closer to position c then position b.
 */
 #include "definitions.h"
 

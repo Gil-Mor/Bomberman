@@ -2,12 +2,10 @@
 #include "ControllerProxy.h"
 #include "GraphicObjectsManager.h"
 
-
-NumOfEnemiesButton::NumOfEnemiesButton(const Posf& pos, size_t numOfEnemies, ControllerProxy& controller)
-    : ControllerButton(pos, controller), _numOfEnemies(numOfEnemies)
+NumOfEnemiesButton::NumOfEnemiesButton(const Posf& pos, size_t numOfEnemies, ControllerProxy& controller) :
+    ControllerButton(pos, controller), _numOfEnemies(numOfEnemies)
 {
-    switch (numOfEnemies)
-    {
+    switch (numOfEnemies) {
         case 0:
             _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(NO_ENEMIES_BUTTON_T));
             break;
@@ -26,10 +24,7 @@ NumOfEnemiesButton::NumOfEnemiesButton(const Posf& pos, size_t numOfEnemies, Con
     }
 
     _sprite.setSize(Posf(_sprite.getSprite().getTextureRect().width, _sprite.getSprite().getTextureRect().height));
-    
-
 }
-
 
 NumOfEnemiesButton::~NumOfEnemiesButton()
 {}
@@ -41,10 +36,9 @@ void NumOfEnemiesButton::draw(GraphicWindow& window)
     }
 }
 
-
 void NumOfEnemiesButton::action() const
 {
-    if (_active)  {
+    if (_active) {
         _controller.setNumOfEnemies(_numOfEnemies);
     }
 }
@@ -53,8 +47,6 @@ void NumOfEnemiesButton::turnOFF3EnemiesButton()
 {
     _active = false;
 }
-
-
 
 void NumOfEnemiesButton::turnOn3EnemiesButton()
 {

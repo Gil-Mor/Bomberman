@@ -2,15 +2,11 @@
 #include "Board.h"
 #include "definitions.h"
 
-ExplosionsBoardProxy::ExplosionsBoardProxy(Board& board)
-    : BoardProxy(board)
-{
-}
-
+ExplosionsBoardProxy::ExplosionsBoardProxy(Board& board) : BoardProxy(board)
+{}
 
 ExplosionsBoardProxy::~ExplosionsBoardProxy()
-{
-}
+{}
 
 void ExplosionsBoardProxy::placeExplosion(explosion_up explosion)
 {

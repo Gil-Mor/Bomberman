@@ -11,11 +11,10 @@ game round then updates the board and the AIMap once.
 #include <forward_list>
 #include "AIMap.h"
 
+using std::forward_list;
+using std::list;
 using std::set;
 using std::vector;
-using std::list;
-using std::forward_list;
-
 
 class GameObject;
 class Dynamite;
@@ -30,18 +29,12 @@ public:
     BoardBuffer();
     ~BoardBuffer();
 
-    void update(board3d& board, PosfMap& posfMap, 
-        DynamitesList& dynamite,
-        ExplosionsList& explosions,
-        AIMap& aiMap);
+    void update(board3d& board, PosfMap& posfMap, DynamitesList& dynamite, ExplosionsList& explosions, AIMap& aiMap);
 
-
-    
     void removeBonus(Bonus* bonus);
     void removeExplodingWall(ExplodingWall* wall);
     void removeDynamite(Dynamite* dynamite);
     void removeExplosion(Explosion* dynamite);
-
 
     void addBonus(bonus_up bonus);
 
@@ -51,25 +44,21 @@ public:
     void moveObject(GameObject* obj, Posb oldPos, Posb newPos);
 
 private:
-
     // ----------- REMOVE ----------
     struct RemovalBuffer
     {
-        // gameObjects is the one that removes from the board. 
-        // it could happen that an item is inserted twice and then 
+        // gameObjects is the one that removes from the board.
+        // it could happen that an item is inserted twice and then
         // after it's deleted once the next time it's POsb will be garbage
         set<GameObject*> gameObjects;
         vector<ExplodingWall*> explodingWalls;
         vector<Dynamite*> dynamites;
         vector<Explosion*> explosions;
 
+    } _removalBuffer;
 
-    }_removalBuffer;
-
-    void removeFromBoard(board3d& board, PosfMap& posfMap, 
-        DynamitesList& dynamite,
-        ExplosionsList& explosions,
-        AIMap& aiMap);
+    void removeFromBoard(
+        board3d& board, PosfMap& posfMap, DynamitesList& dynamite, ExplosionsList& explosions, AIMap& aiMap);
 
     //------------ ADD ----------------
     struct AddBuffer
@@ -79,9 +68,7 @@ private:
         vector<explosion_up> explosions;
     } _addBuffer;
 
-    void addToBoard(board3d& board, PosfMap& posfMap, DynamitesList& dynamite,
-        ExplosionsList& explosions);
-
+    void addToBoard(board3d& board, DynamitesList& dynamite, ExplosionsList& explosions);
 
     // ---------- MOVE ----------------
     struct Movement
@@ -99,9 +86,6 @@ private:
     void moveOnBoard(board3d& board);
 
     //----------------------------
-    
+
     //---------- NAGER MAP ---------
-
-
 };
-

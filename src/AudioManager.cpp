@@ -3,17 +3,13 @@
 
 using std::string;
 
-
 const string FOLDER = "../sounds/";
-
 
 AudioManager::AudioManager()
 {
-
     _buffers.resize(NUM_OF_SOUNDS);
     for (auto& buffer : _buffers)
         buffer.reset(new sf::SoundBuffer);
-
 
     _buffers[APPLAUSE]->loadFromFile(FOLDER + "applause.wav");
     _buffers[EXPLOSION]->loadFromFile(FOLDER + "dynamite.wav");
@@ -23,9 +19,6 @@ AudioManager::AudioManager()
     _buffers[COLLECT_BONUS]->loadFromFile(FOLDER + "collectBonus.wav");
     _buffers[GETTING_HIT]->loadFromFile(FOLDER + "gettingHit.wav");
     _buffers[DYNAMITE_TICK]->loadFromFile(FOLDER + "dynamiteTick.wav");
-
-
-
 
     _sounds.resize(NUM_OF_SOUNDS);
     for (auto& sound : _sounds)
@@ -43,27 +36,19 @@ AudioManager::AudioManager()
     _sounds[COLLECT_BONUS]->setBuffer(*_buffers[COLLECT_BONUS].get());
     _sounds[COLLECT_BONUS]->setPitch(1.5);
 
-
-
     _sounds[GETTING_HIT]->setBuffer(*_buffers[GETTING_HIT].get());
 
     _sounds[DYNAMITE_TICK]->setBuffer(*_buffers[DYNAMITE_TICK].get());
 
-
-
     setFXVolumes();
-
 
     _soundTrack.reset(new sf::Music);
     _soundTrack->openFromFile(FOLDER + "Boogie Van.ogg");
     _soundTrack->setVolume(70);
-
 }
-
 
 AudioManager::~AudioManager()
-{
-}
+{}
 
 void AudioManager::setFXVolumes()
 {
@@ -71,10 +56,7 @@ void AudioManager::setFXVolumes()
     _sounds[COLLECT_BONUS]->setVolume(40);
     _sounds[EXPLOSION]->setVolume(70);
     _sounds[TELEPORT]->setVolume(70);
-
-
 }
-
 
 void AudioManager::FXon()
 {
@@ -90,62 +72,42 @@ void AudioManager::FXoff()
         sound->setVolume(0);
 }
 
-
 void AudioManager::volumeUp()
 {
     float vol = _soundTrack->getVolume();
 
-    if (vol >= 100)
-        return;
-
-    if (vol > 90)
-    _soundTrack->setVolume(100);
-
-    else {
+    if (vol > 90) {
+        _soundTrack->setVolume(100);
+    } else {
         _soundTrack->setVolume(vol + 10);
-
     }
 }
-
 
 void AudioManager::volumeDown()
 {
     float vol = _soundTrack->getVolume();
 
-    if (vol == 0)
-        return;
-
-    if (vol < 10)
+    if (vol < 10) {
         _soundTrack->setVolume(0);
-
-    else {
+    } else {
         _soundTrack->setVolume(vol - 10);
-
     }
-
 }
-
 
 void AudioManager::stopSoundTrack()
 {
     _soundTrack->pause();
-
 }
-
 
 void AudioManager::playSoundTrack()
 {
     _soundTrack->play();
-
-
 }
-
 
 GameSound_p AudioManager::getSound(AudioManager::Sounds sound)
 {
     return _sounds[sound].get();
 }
-
 
 SoundTrack_p AudioManager::getSoundTrack()
 {

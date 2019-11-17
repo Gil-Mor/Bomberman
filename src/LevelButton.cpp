@@ -2,13 +2,10 @@
 #include "ControllerProxy.h"
 #include "GraphicObjectsManager.h"
 
-LevelButton::LevelButton(const Posf& pos, Levels level, ControllerProxy& controller)
-    : ControllerButton(pos, controller), _level(level)
+LevelButton::LevelButton(const Posf& pos, Levels level, ControllerProxy& controller) :
+    ControllerButton(pos, controller), _level(level)
 {
-
-
-    switch (level)
-    {
+    switch (level) {
         case LevelButton::LEVEL_1:
             _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(LEVEL_1_BUTTON_T));
             break;
@@ -31,13 +28,10 @@ LevelButton::LevelButton(const Posf& pos, Levels level, ControllerProxy& control
     }
 
     _sprite.setSize(Posf(_sprite.getSprite().getTextureRect().width, _sprite.getSprite().getTextureRect().height));
-
 }
-
 
 LevelButton::~LevelButton()
-{
-}
+{}
 
 void LevelButton::action() const
 {

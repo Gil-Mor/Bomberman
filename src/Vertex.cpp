@@ -1,18 +1,15 @@
 #include "Vertex.h"
 
-Vertex::Vertex(const Posb& posb, vertex_d d, bool free)
-    : _posb(posb), _vertex_d(d), _isFree(free)
+Vertex::Vertex(const Posb& posb, vertex_d d, bool free) : _posb(posb), _vertex_d(d), _isFree(free)
 {}
 
 Vertex::~Vertex()
-{
-}
+{}
 
 const vertex_d& Vertex::getDescriptor() const
 {
     return _vertex_d;
 }
-
 
 void Vertex::setToFree()
 {
@@ -29,7 +26,7 @@ void Vertex::setPredecessor(Vertex* p)
     _predecessor = p;
 }
 
-Vertex* Vertex::getPredecessor() 
+Vertex* Vertex::getPredecessor()
 {
     return _predecessor;
 }

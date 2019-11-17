@@ -4,17 +4,13 @@
 #include "BomberMan.h"
 #include "GraphicObjectsManager.h"
 
-
-FreeTile::FreeTile(const Posf& posf, const Posb& posb)
-    : GameObject(posf, posb)
+FreeTile::FreeTile(const Posf& posf, const Posb& posb) : GameObject(posf, posb)
 {
     _sprite.setColor(Color::Transparent);
 }
 
-
 FreeTile::~FreeTile()
-{
-}
+{}
 
 void FreeTile::colide(GameObject& other)
 {

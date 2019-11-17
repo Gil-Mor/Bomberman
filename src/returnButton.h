@@ -1,7 +1,7 @@
 #pragma once
-/* 
+/*
   A Button which tells the controller to go back to the previous state.
-  Used by Instruction page which can be called both from the main menu 
+  Used by Instruction page which can be called both from the main menu
   and the level so we need to go back to the previous state.
 */
 #include "ControllerButton.h"
@@ -13,4 +13,3 @@ public:
 
     void action() const override;
 };
-

@@ -1,5 +1,5 @@
 #pragma once
-/* 
+/*
   Encapsulates calls to methods in the controller.
   Also holds the ControllerState enum so that everyone can use it.
 */
@@ -7,28 +7,23 @@
 
 class Controller;
 
-
-enum ControllerState
-{
-    MAIN_MENU,           // play game, instructions and exit buttons.
-    GAME_MENU,           // choose num of players, num of Opponents and difficulty.
-    INSTRUCTION_MENU, 
+enum ControllerState {
+    MAIN_MENU, // play game, instructions and exit buttons.
+    GAME_MENU, // choose num of players, num of Opponents and difficulty.
+    INSTRUCTION_MENU,
     LEVELS_MENU,
     PLAYING,
-    PAUSE,               // showing pause menu
+    PAUSE, // showing pause menu
     EXITING
 };
-
 
 class ControllerProxy
 {
 public:
-
     ControllerProxy(Controller& c);
 
-    
     const ControllerState& getState() const;
-    void setState(const ControllerState& );
+    void setState(const ControllerState&);
     void goToPreviousState();
 
     void setNextLevel(int level);
@@ -40,8 +35,6 @@ public:
 
     Posf getWindowSize() const;
 
-
 private:
     Controller& _controller;
 };
-

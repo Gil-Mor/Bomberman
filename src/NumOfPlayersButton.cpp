@@ -2,13 +2,13 @@
 #include "ControllerProxy.h"
 #include "GraphicObjectsManager.h"
 
-NumOfPlayersButton::NumOfPlayersButton(const Posf& pos, size_t num, 
-    ControllerProxy& controller)
+NumOfPlayersButton::NumOfPlayersButton(const Posf& pos, size_t num, ControllerProxy& controller)
 
-    : ControllerButton(pos, controller), _numOfPlayers(num)
+    :
+    ControllerButton(pos, controller),
+    _numOfPlayers(num)
 {
-    switch (num)
-    {
+    switch (num) {
         case 1:
             _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(ONE_PLAYER_BUTTON_T));
             break;
@@ -17,18 +17,15 @@ NumOfPlayersButton::NumOfPlayersButton(const Posf& pos, size_t num,
             _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(TWO_PLAYER_BUTTON_T));
             break;
 
-
         default:
             break;
     }
 
     _sprite.setSize(Posf(_sprite.getSprite().getTextureRect().width, _sprite.getSprite().getTextureRect().height));
-
 }
 
 NumOfPlayersButton::~NumOfPlayersButton()
 {}
-
 
 void NumOfPlayersButton::action() const
 {

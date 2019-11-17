@@ -1,8 +1,7 @@
 #pragma once
 /* A Free tile*/
 #include "GameObject.h"
-class FreeTile :
-    public GameObject
+class FreeTile : public GameObject
 {
 public:
     FreeTile(const Posf& posf, const Posb& posb);
@@ -17,5 +16,3 @@ public:
 
     virtual void colide(BomberMan& other) override;
 };
-
-

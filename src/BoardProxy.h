@@ -1,8 +1,8 @@
 #pragma once
-/* Base class for all board proxies. Has methods that mostly the player uses. 
+/* Base class for all board proxies. Has methods that mostly the player uses.
 Different game objects use mostly getelapsedTime. enemyBoardProxy and
-ExplosionBoardProxy are derived from this class and they also use most of the 
-methods that the player uses. 
+ExplosionBoardProxy are derived from this class and they also use most of the
+methods that the player uses.
 */
 
 #include <memory>
@@ -20,7 +20,6 @@ class Board;
 class BoardProxy
 {
 public:
-
     BoardProxy(Board& level);
     ~BoardProxy();
 
@@ -33,25 +32,21 @@ public:
     void removeExplodingWall(ExplodingWall* wall);
     void removeBonus(Bonus* bonus);
 
-    void placeBonus(bonus_up& bonus);
-    void placeDynamite(dynamite_up& dynamite);
+    void placeBonus(bonus_up bonus);
+    void placeDynamite(dynamite_up dynamite);
 
     sf::Time getElapsedTime() const;
 
     float getElapsedTimeAsSeconds() const;
 
-
     const Posf& getTilePosf(const Posb& posb) const;
 
     bool validPosb(const Posb& posb) const;
 
-
-    // BomberMan gets the explosion proxy just to give it to 
+    // BomberMan gets the explosion proxy just to give it to
     // dynamites on creation.
-     ExplosionsBoardProxy& getExplosionProxy() ;
-
+    ExplosionsBoardProxy& getExplosionProxy();
 
 protected:
     Board& _board;
 };
-

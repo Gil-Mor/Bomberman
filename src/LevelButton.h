@@ -6,9 +6,7 @@
 class LevelButton : public ControllerButton
 {
 public:
-
-    enum Levels
-    {
+    enum Levels {
         LEVEL_1,
         LEVEL_2,
         LEVEL_3,
@@ -24,4 +22,3 @@ public:
 private:
     Levels _level;
 };
-

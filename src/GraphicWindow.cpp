@@ -4,13 +4,7 @@
 
 GraphicWindow::GraphicWindow()
 {
-    initWindow();
-}
-void GraphicWindow::initWindow()
-{
-    _window.create(sf::VideoMode::getFullscreenModes()[0], "I Blow Things Up", sf::Style::Default);
-    _window.setSize({ _window.getSize().x - 15, _window.getSize().y - 80});
-
+    _window.create(sf::VideoMode::getFullscreenModes()[0], "I Blow Things Up", sf::Style::Fullscreen);
     _window.setFramerateLimit(60);
 }
 
@@ -34,7 +28,6 @@ void GraphicWindow::draw(const sf::RectangleShape& rect)
     _window.draw(rect);
 }
 
-
 void GraphicWindow::display()
 {
     _window.display();
@@ -52,6 +45,5 @@ sf::RenderWindow& GraphicWindow::getWindow()
 
 Posf GraphicWindow::getSizeF() const
 {
-    return Posf(float(_window.getSize().x), float(_window.getSize().y) );
+    return Posf(static_cast<float>(_window.getSize().x), static_cast<float>(_window.getSize().y));
 }
-

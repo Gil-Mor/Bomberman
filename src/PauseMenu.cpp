@@ -4,13 +4,10 @@
 #include "ControllerStateButton.h"
 #include "MusicButton.h"
 
-PauseMenu::PauseMenu(ControllerProxy& controller)
-    :Menu(controller)
+PauseMenu::PauseMenu(ControllerProxy& controller) : Menu(controller)
 {
-
     _bgImg.setTexture(GraphicObjectsManager::getInstance().getTexture(MAIN_MENU_T));
     _bgImg.setSize(controller.getWindowSize());
-
 
     _keysToStates[sf::Keyboard::Return] = ControllerState::PLAYING;
     _keysToStates[sf::Keyboard::Space] = ControllerState::PLAYING;
@@ -19,17 +16,12 @@ PauseMenu::PauseMenu(ControllerProxy& controller)
     setButtons();
 }
 
-
 PauseMenu::~PauseMenu()
-{
-}
+{}
 
 void PauseMenu::setButtons()
 {
-
     Posf pos(50, 200);
-
-
 
     _buttons.push_back(button_p(new ControllerStateButton(pos, _controller, ControllerState::PLAYING)));
 
@@ -39,12 +31,11 @@ void PauseMenu::setButtons()
 
     pos.y += _buttons.back()->getSize().y + 20;
 
-
     _buttons.push_back(button_p(new ControllerStateButton(pos, _controller, ControllerState::MAIN_MENU)));
 
     pos.y += _buttons.back()->getSize().y + 20;
 
-    pos = { _controller.getWindowSize().x - 300, 130 };
+    pos = {_controller.getWindowSize().x - 300, 130};
 
     _buttons.push_back(button_p(new MusicButton(pos, MusicButton::STOP)));
 
@@ -69,5 +60,4 @@ void PauseMenu::setButtons()
     _buttons.push_back(button_p(new MusicButton(pos, MusicButton::FX_ON)));
 
     pos.y += _buttons.back()->getSize().y + 20;
-
 }

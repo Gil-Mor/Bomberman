@@ -1,5 +1,5 @@
 #pragma once
-/* 
+/*
   Base class for all buttons. Implements Button common functionality
 */
 #include "Sprite.h"
@@ -10,7 +10,6 @@ class GraphicWindow;
 class Button
 {
 public:
-
     Button(const Posf& pos);
 
     virtual ~Button() = 0;
@@ -34,11 +33,7 @@ public:
     const Posf& getSize() const;
 
 protected:
-
     bool _inFocus = false, _chosen = false;
 
     Sprite _sprite;
-
-
 };
-

@@ -1,6 +1,8 @@
 #pragma once
 /* Proxy for BFS visitor. The BFS Visitor needs to check the stop condition in the map
 and save the result. */
+
+#include "AIMap.h"
 #include "definitions.h"
 
 class AIMap;
@@ -17,13 +19,9 @@ public:
 
     void setVertexPredecessor(const edge_d& e);
 
-    void setVertexPredecessor(const vertex_d& d);
-
     bool checkStopCondition(const vertex_d& d);
 
 private:
-
     AIMap& _map;
     BfsStopCondition _stopCondition;
 };
-

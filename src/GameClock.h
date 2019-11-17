@@ -1,8 +1,8 @@
 #pragma once
-/* 
-the game Clock. the level has it. everything in the game needs to be synchronized 
-to it so LevelProxy can ask the time from level. 
-BoardProxy can ask from level proxy. 
+/*
+the game Clock. the level has it. everything in the game needs to be synchronized
+to it so LevelProxy can ask the time from level.
+BoardProxy can ask from level proxy.
 */
 #include "Chronometer.h"
 
@@ -19,9 +19,6 @@ public:
     void reset();
     bool isRunning() const;
 
-
 private:
-
     sftools::Chronometer _clock;
 };
-
