@@ -1,5 +1,5 @@
 #pragma once
-/* 
+/*
   The Instruction pages. Derived from menu for the buttons..
 */
 #include "Menu.h"
@@ -12,8 +12,7 @@ using std::vector;
 class InstructionPage : public Menu
 {
 public:
-    enum Pages
-    {
+    enum Pages {
         PAGE_ONE,
         PAGE_TWO,
         PAGE_THREE,
@@ -29,16 +28,10 @@ public:
     void flipPage(FlipPageButton::Direction dir);
 
 private:
-
-
     vector<Sprite> _pages;
 
     // the current page were at.
-    int _currPage = PAGE_ONE;
+    size_t _currPage = PAGE_ONE;
 
     void setButtons();
-
-
-    
 };
-

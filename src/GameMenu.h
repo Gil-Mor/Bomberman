@@ -1,5 +1,5 @@
 #pragma once
-/* 
+/*
   Game Menu. Where the user chooses number of players and number of enemies.
 */
 
@@ -7,13 +7,10 @@
 
 class ControllerProxy;
 
-class GameMenu :
-    public Menu
+class GameMenu : public Menu
 {
 public:
-
-    enum Buttons
-    {
+    enum Buttons {
 
         MAIN_MENU,
         LEVELS_MENU,
@@ -31,16 +28,10 @@ public:
 
     ~GameMenu();
 
-    /*virtual void run(GraphicWindow& graphics) override;*/
-
     void turnOFF3EnemiesButton();
 
     void turnOn3EnemiesButton();
 
-
 private:
-
     void setButtons();
-
 };
-

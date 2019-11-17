@@ -1,5 +1,5 @@
 #pragma once
-/* 
+/*
 Derived from BoardProxy. encapsulates calls to board for enemy
 which needs the location of the nearest player, path to the closest position
 to the player and path so a safe position.
@@ -34,8 +34,4 @@ public:
     bool isFreeTile(const Posb& pos);
 
     bool dangerousPos(const Posb& pos, const DangerType& danger) const;
-
-
-
 };
-

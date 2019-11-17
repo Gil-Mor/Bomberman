@@ -2,7 +2,7 @@
 
 /* Singleton that loads and saves audio files. sf::SoundBuffer which is used for sf::Sound.
 and sf::Music. The Game Objects get their sounds from here but sound track
-is played from here directly. 
+is played from here directly.
 Very Useful if we want to turn off all FX.. we just mute them from here.*/
 
 #include <SFML/Audio.hpp>
@@ -14,29 +14,15 @@ using std::unique_ptr;
 using std::vector;
 
 typedef unique_ptr<sf::SoundBuffer> buffer_up;
-
 typedef unique_ptr<sf::Sound> sound_up;
-
 typedef sf::Sound* GameSound_p;
-
-
-//typedef unique_ptr<GameSound> gameSound_up;
 typedef unique_ptr<sf::Music> music_up;
-
 typedef sf::Music* SoundTrack_p;
-
-
-//typedef unique_ptr<SoundTrack> soundTrack_up;
-
-
-
 
 class AudioManager
 {
 public:
-
-    enum Sounds
-    {
+    enum Sounds {
         APPLAUSE,
         LOSING_BOO,
         DIE,
@@ -45,8 +31,6 @@ public:
         GETTING_HIT,
         COLLECT_BONUS,
         DYNAMITE_TICK,
-
-
 
         NUM_OF_SOUNDS
     };
@@ -65,13 +49,7 @@ public:
     void FXon();
     void FXoff();
 
-
-
-
-
-
 private:
-
     vector<buffer_up> _buffers;
 
     vector<sound_up> _sounds;
@@ -84,6 +62,4 @@ private:
     AudioManager();
     AudioManager(const AudioManager&);
     AudioManager& operator=(AudioManager const& copy);
-
 };
-

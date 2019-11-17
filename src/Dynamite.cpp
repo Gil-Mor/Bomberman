@@ -13,11 +13,16 @@
 
 const float TICKING_TIME = 2;
 
-Dynamite::Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Color& color, 
-    BomberManProxy& owner, ExplosionsBoardProxy& explosionProxy)
-    : Movable(posf, posb), _radius(radius), _owner(owner), _dynamiteProxy(explosionProxy)
+Dynamite::Dynamite(
+    const Posf& posf,
+    const Posb& posb,
+    const size_t& radius,
+    Color color,
+    BomberManProxy& owner,
+    ExplosionsBoardProxy& explosionProxy) :
+    Movable(posf, posb),
+    _radius(radius), _owner(owner), _dynamiteProxy(explosionProxy)
 {
-    
     _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(DYNAMITE_T));
     _sprite.setColor(color);
 
@@ -28,8 +33,6 @@ Dynamite::Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Col
     _explosionSound = AudioManager::getInstance().getSound(AudioManager::EXPLOSION);
     _tickSound = AudioManager::getInstance().getSound(AudioManager::DYNAMITE_TICK);
 
-
-
     setObjectBoardProxy(&_dynamiteProxy);
     _triggeredTime = _dynamiteProxy.getElapsedTime().asSeconds();
 
@@ -37,12 +40,10 @@ Dynamite::Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Col
 }
 
 Dynamite::~Dynamite()
-{
-}
+{}
 
 void Dynamite::update()
 {
-
     Movable::update();
 
     // moving at the beginning. stop moving as soon as stopped once.
@@ -50,41 +51,30 @@ void Dynamite::update()
     // it won't move again.
     if (_kicked && _moving) {
         tryMove(_direction);
-        if (_moving) 
-        {
+        if (_moving) {
             setMoveOnBoard();
-
         }
     }
-
 
     _animation.animation.update(_boardProxy->getElapsedTimeAsSeconds(), _animation.frameDuration);
     _sprite.setVisibleRect(_animation.animation.getFrame());
 
-    if (_boardProxy->getElapsedTimeAsSeconds() - _triggeredTime >= TICKING_TIME)
-    {
+    if (_boardProxy->getElapsedTimeAsSeconds() - _triggeredTime >= TICKING_TIME) {
         explode();
     }
-
-   
 }
-
 
 void Dynamite::explode()
 {
-
     _tickSound->stop();
     // let the owner know that this dynamite exploded
     _owner.dynamiteExploded();
 
-
-
-    _dynamiteProxy.placeExplosion(explosion_up(new Explosion(_posf, _posb, _radius,
-        _sprite.getColor(), _dynamiteProxy)));
+    _dynamiteProxy.placeExplosion(
+        explosion_up(new Explosion(_posf, _posb, _radius, _sprite.getColor(), _dynamiteProxy)));
 
     _dynamiteProxy.removeDynamiteFromBoard(this);
     _explosionSound->play();
-
 }
 
 void Dynamite::kicked(Movable::Direction dir)
@@ -95,7 +85,6 @@ void Dynamite::kicked(Movable::Direction dir)
     _direction = dir;
 }
 
-
 void Dynamite::colide(GameObject& other)
 {
     other.colide(*this);
@@ -103,39 +92,41 @@ void Dynamite::colide(GameObject& other)
 
 void Dynamite::colide(Dynamite& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
 }
 
 void Dynamite::colide(Explosion& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
-
 }
 
 void Dynamite::colide(BomberMan& other)
 {
+    (void)other;
     _movedTile = false;
     _moving = false;
 }
 
-
 void Dynamite::colide(FreeTile& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
-
 }
 
 void Dynamite::colide(StoneWall& other)
 {
+    (void)other;
     _movedTile = false;
-
 }
 
 void Dynamite::colide(ExplodingWall& other)
 {
+    (void)other;
     _movedTile = false;
 }
 
@@ -149,12 +140,12 @@ void Dynamite::colide(Teleport& other)
 
 void Dynamite::colide(Bonus& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
-
 }
 
-int Dynamite::getExplosionRadius() const
+size_t Dynamite::getExplosionRadius() const
 {
     return _radius;
 }

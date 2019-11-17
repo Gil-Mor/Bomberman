@@ -1,6 +1,6 @@
 #pragma once
 
-/* 
+/*
 enum that connects between names of textures to the
 vector of textures in GraphicObjectsManager.
 Graphic object need to ask GraphicObjectsManager for a texture with this enum
@@ -10,8 +10,7 @@ to know of all the other textures.
 So here we are..
 */
 
-enum Textures
-{
+enum Textures {
 
     // game objects sprite sheet
     ALL_GAME_OBJECTS_T = 0,
@@ -41,7 +40,6 @@ enum Textures
 
     RETURN_BUTTON_T,
 
-
     LEVEL_1_BUTTON_T,
     LEVEL_2_BUTTON_T,
     LEVEL_3_BUTTON_T,
@@ -60,7 +58,6 @@ enum Textures
     WIN_SCREEN_T,
     LOSE_SCREEN_T,
 
-    
     BOARD_BACKGROUND_T,
     FREE_TILE_T,
     BOMBER_MAN_T,
@@ -72,9 +69,5 @@ enum Textures
     BONUSES_T,
     TELEPORT_T,
 
-
-
-
     NUM_OF_TEXTURES
 };
-

@@ -12,7 +12,5 @@ public:
     sf::Time getElapsedTime() const;
 
 private:
-
     Level& _level;
 };
-

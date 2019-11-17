@@ -1,10 +1,8 @@
 #include "EnemyBoardProxy.h"
 #include "Board.h"
 
-EnemyBoardProxy::EnemyBoardProxy(Board& board)
-    : BoardProxy(board)
-{
-}
+EnemyBoardProxy::EnemyBoardProxy(Board& board) : BoardProxy(board)
+{}
 
 Posb EnemyBoardProxy::getNearestPlayerPos(const Posb& mypos)
 {
@@ -17,7 +15,6 @@ Path EnemyBoardProxy::pathToSaftey(const Posb& source)
 {
     return _board.pathToSaftey(source);
 }
-
 
 // bfs builds shortest path to a destination (the palyer..)
 Path EnemyBoardProxy::pathToDestination(const Posb& source, const Posb& dest)
@@ -34,4 +31,3 @@ bool EnemyBoardProxy::dangerousPos(const Posb& pos, const DangerType& danger) co
 {
     return _board.dangerousPos(pos, danger);
 }
-

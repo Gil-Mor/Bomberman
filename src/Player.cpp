@@ -12,11 +12,9 @@
 
 const float PLAYER_MOVE_PAUSE = 0;
 
-Player::Player(const Posf& posf, const Posb& posb, size_t playerNum)
-    :BomberMan(posf, posb), _playerNum(playerNum)
+Player::Player(const Posf& posf, const Posb& posb, size_t playerNum) : BomberMan(posf, posb), _playerNum(playerNum)
 {
-    switch (playerNum)
-    {
+    switch (playerNum) {
         case 1:
             _sprite.setColor(PLAYER_1_COLOR);
             break;
@@ -24,70 +22,49 @@ Player::Player(const Posf& posf, const Posb& posb, size_t playerNum)
         case 2:
             _sprite.setColor(PLAYER_2_COLOR);
             break;
-
     }
     _bonusSound = AudioManager::getInstance().getSound(AudioManager::COLLECT_BONUS);
-
 }
-
 
 Player::~Player()
 {}
 
-
 void Player::saveKey(sf::Keyboard::Key key)
 {
-
     _key.keyPressed = true;
     _key.key = key;
 }
 
 void Player::update()
 {
-    
-
     Movable::update();
 
-
-    switch (_bomberManState)
-    {
-        case BomberMan::LAST_EXPLOSION_S :
-        case BomberMan::COMPLETELY_DEAD_S:
-        {
+    switch (_bomberManState) {
+        case BomberMan::LAST_EXPLOSION_S:
+        case BomberMan::COMPLETELY_DEAD_S: {
             break;
         }
 
-
-        case BomberMan::PLAYING_S:
-        {
+        case BomberMan::PLAYING_S: {
             if (!_key.keyPressed)
                 break;
 
-            if (movementKey(_key.key))
-            {
+            if (movementKey(_key.key)) {
                 if (timeToMove(PLAYER_MOVE_PAUSE)) {
                     setLastMoveToNow();
-                }
-                else {
+                } else {
                     break;
                 }
-                if (tryMove(keyToDirection(_key.key)))
-                {
+                if (tryMove(keyToDirection(_key.key))) {
                     setMoveOnBoard();
-                    //updateMovingAnimation();
-
                 }
             }
 
-            else
-            {
+            else {
                 Action action = keyToAction(_key.key);
 
-                switch (action)
-                {
-
-                    case PUT_DYNAMITE:
-                    {
+                switch (action) {
+                    case PUT_DYNAMITE: {
                         // call base class - Bomberman - method.
                         placeDynamite(*_boardProxy);
                     }
@@ -100,11 +77,9 @@ void Player::update()
             break;
         }
 
-        case BomberMan::EXPLODING_S:
-        {
+        case BomberMan::EXPLODING_S: {
             break;
         }
-
 
         default:
             break;
@@ -112,7 +87,6 @@ void Player::update()
 
     updateAnimation();
     _key.keyPressed = false;
-
 }
 
 void Player::colide(GameObject& other)
@@ -138,56 +112,45 @@ int Player::getHealth() const
 
 bool Player::movementKey(sf::Keyboard::Key key) const
 {
-    return key == sf::Keyboard::Left
-        || key == sf::Keyboard::Right
-        || key == sf::Keyboard::Up
-        || key == sf::Keyboard::Down
-        || key == sf::Keyboard::W
-        || key == sf::Keyboard::A
-        || key == sf::Keyboard::D
-        || key == sf::Keyboard::S;
+    if (_playerNum == 1) {
+        return key == sf::Keyboard::Left || key == sf::Keyboard::Right || key == sf::Keyboard::Up ||
+           key == sf::Keyboard::Down;
+    } else {
+        return key == sf::Keyboard::W || key == sf::Keyboard::A || key == sf::Keyboard::D ||
+           key == sf::Keyboard::S;
+    }
 }
-
 
 Movable::Direction Player::keyToDirection(sf::Keyboard::Key key) const
 {
-    switch (key)
-    {
+    switch (key) {
         case sf::Keyboard::Up:
         case sf::Keyboard::W:
             return Player::UP;
-            break;
 
         case sf::Keyboard::Down:
         case sf::Keyboard::S:
             return Player::DOWN;
-            break;
 
         case sf::Keyboard::Left:
         case sf::Keyboard::A:
             return Player::LEFT;
-            break;
 
         case sf::Keyboard::Right:
         case sf::Keyboard::D:
             return Player::RIGHT;
-            break;
-    }
 
+        default:
+            return Player::UNDEFINED;
+    }
 }
 
 Player::Action Player::keyToAction(sf::Keyboard::Key key) const
 {
-    switch (key)
-    {
-        case sf::Keyboard::LControl:
-        case sf::Keyboard::RControl:
-            return PUT_DYNAMITE;
-
-        default:
-            return NOTHING;
-
+    if (_playerNum == 1 && key == sf::Keyboard::RControl) {
+        return PUT_DYNAMITE;
+    } else if (_playerNum == 2 && key == sf::Keyboard::LControl) {
+        return PUT_DYNAMITE;
     }
+    return NOTHING;
 }
-
-

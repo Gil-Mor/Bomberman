@@ -1,6 +1,6 @@
 #pragma once
 
-/* Controls the flow of the program. activates the menus, loads levels from 
+/* Controls the flow of the program. activates the menus, loads levels from
 level builder and calls level.run().
 */
 
@@ -17,13 +17,9 @@ level builder and calls level.run().
 
 using std::string;
 
-
 class Controller
 {
 public:
-    
-
-
     Controller();
     ~Controller();
 
@@ -34,64 +30,48 @@ public:
     const ControllerState& getState() const;
     void goToPreviousState();
 
-
     // called from buttons
     void setNumOfPlayersForLevel(size_t num);
     void setNumOfEnemiesForLevel(size_t num);
-
 
     // called from Controller Proxy by everything that needs
     // to set it's size according to the window..
     // menus, levels, etc..
     Posf getWindowSize() const;
 
-
     // called from LevelButton from Levels Menu
     void setNextLevel(int level);
     void loadNextLevel();
 
-
-
 private:
+    /* Interface for using SFML RenderWindow.
+    already initialized. */
+    GraphicWindow _window;
+
+    // Initualized in ctor
+    ControllerProxy _proxy;
+    MainMenu _mainMenu;
+    GameMenu _gameMenu;
+    PauseMenu _pauseMenu;
+    LevelsMenu _levelsMenu;
+    InstructionPage _instructionPages;
+    Level _level; // has to save the level for pausing and resuming.
 
     // indicates that the Controller was successfully built.
     bool _buildSuccess = true;
 
     ControllerState _state = ControllerState::MAIN_MENU;
 
-    // keeps it's previous state so that if a state can be entered to 
+    // keeps it's previous state so that if a state can be entered to
     // from multiple states it'll know where to go back to.
-    // for instance instruction pages can be reached to 
+    // for instance instruction pages can be reached to
     // from the pause menu or from main menu. how can the controller
     // know where to go after he leaves instruction pages?
     ControllerState _prevState = ControllerState::MAIN_MENU;
 
-
-    /* Interface for using SFML RenderWindow. 
-    already initialized. */
-    GraphicWindow _window;
-
-    ControllerProxy _proxy;
-
-    // has to save the level for pausing and resuming.
-    Level _level;
-
-    MainMenu _mainMenu;
-
-    GameMenu _gameMenu;
-
-    PauseMenu _pauseMenu;
-
-    LevelsMenu _levelsMenu;
-
-    InstructionPage _instructionPages;
-
     // proporties are set by buttons and are sent to the level builder.
     struct LevelProporties
     {
-        size_t numOfPlayers = 1, numOfEnemies = 1,
-            currLevel = 0;
+        size_t numOfPlayers = 1, numOfEnemies = 1, currLevel = 0;
     } _levelProporties;
-
 };
-

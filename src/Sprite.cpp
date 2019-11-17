@@ -1,18 +1,9 @@
 #include "Sprite.h"
 #include "GraphicWindow.h"
 
-Sprite::Sprite()
-{
-}
-
 Sprite::Sprite(const Posf& size)
 {
     _sprite.setSize(size);
-}
-
-
-Sprite::~Sprite()
-{
 }
 
 sf::RectangleShape& Sprite::getSprite()
@@ -38,7 +29,6 @@ void Sprite::setVisibleRect(const Posf& size)
 void Sprite::setVisibleRect(sf::IntRect rect)
 {
     _sprite.setTextureRect(rect);
-
 }
 
 Color Sprite::getColor() const
@@ -46,18 +36,15 @@ Color Sprite::getColor() const
     return _sprite.getFillColor();
 }
 
-
 const Posf& Sprite::getPosition() const
 {
     return _sprite.getPosition();
 }
 
-
 void Sprite::setPosition(const Posf& pos)
 {
     _sprite.setPosition(pos);
 }
-
 
 void Sprite::setColor(const Color& color)
 {
@@ -74,7 +61,7 @@ const Posf& Sprite::getSize() const
     return _sprite.getSize();
 }
 
-void Sprite::draw(GraphicWindow& window) 
+void Sprite::draw(GraphicWindow& window)
 {
     window.draw(_sprite);
 }

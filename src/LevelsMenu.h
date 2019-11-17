@@ -12,8 +12,6 @@ public:
     LevelsMenu(ControllerProxy& controller);
     virtual ~LevelsMenu();
 
-
 private:
     void setButtons();
 };
-

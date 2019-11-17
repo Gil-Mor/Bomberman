@@ -4,16 +4,11 @@
 #include "BomberMan.h"
 #include "GraphicObjectsManager.h"
 
-
-
-
-Bonus::Bonus(const Posf& posf, const Posb& posb, const Bonus::BonusType& type)
-    : GameObject(posf, posb), _type(type)
+Bonus::Bonus(const Posf& posf, const Posb& posb, const Bonus::BonusType& type) : GameObject(posf, posb), _type(type)
 {
     _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(BONUSES_T));
 
-    switch (type)
-    {
+    switch (type) {
         case MORE_DYNAMITES:
             _sprite.setVisibleRect(MORE_DYNAMITES_R);
             break;
@@ -42,7 +37,6 @@ Bonus::Bonus(const Posf& posf, const Posb& posb, const Bonus::BonusType& type)
 Bonus::~Bonus()
 {}
 
-
 void Bonus::colide(GameObject& other)
 {
     other.colide(*this);
@@ -60,7 +54,6 @@ void Bonus::colide(Explosion& other)
 
 void Bonus::colide(BomberMan& other)
 {
-
     other.colide(*this);
 }
 
