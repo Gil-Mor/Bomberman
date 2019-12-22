@@ -110,7 +110,7 @@ private:
     // save information about teleportation
     struct Teleported
     {
-        Teleported() : teleported(false), twinPosb({ -1, -1 }), _lastTeleportation(0) {}
+        Teleported() : teleported(false), twinPosb({ Posb::INVALID_POS, Posb::INVALID_POS }), _lastTeleportation(0) {}
 
         bool teleported;
         Posb twinPosb;

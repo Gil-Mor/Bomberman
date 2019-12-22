@@ -116,7 +116,7 @@ void Menu::run(GraphicWindow& window)
 
 void Menu::handleMouseMove(const Posf mouse)
 {
-    for (unsigned int i = 0; i < _buttons.size(); ++i)
+    for (size_t i = 0; i < _buttons.size(); ++i)
     {
         if (_buttons[i]->mouseOver(mouse))
         {
@@ -131,7 +131,7 @@ void Menu::handleMouseMove(const Posf mouse)
 
 void Menu::handleMouseDrag(const Posf mouse)
 {
-    for (unsigned int i = 0; i < _buttons.size(); ++i)
+    for (size_t i = 0; i < _buttons.size(); ++i)
     {
         if (_buttons[i]->mouseOver(mouse))
         {
@@ -148,7 +148,7 @@ void Menu::handleMouseDrag(const Posf mouse)
 
 void Menu::handleMousePress(const Posf mouse)
 {
-    for (unsigned int i = 0; i < _buttons.size(); ++i)
+    for (size_t i = 0; i < _buttons.size(); ++i)
     {
         if (_buttons[i]->getInFocus())
         {
@@ -164,7 +164,7 @@ void Menu::handleMousePress(const Posf mouse)
 
 void Menu::handleMouseRelease(const Posf mouse)
 {
-    for (unsigned int i = 0; i < _buttons.size(); ++i)
+    for (size_t i = 0; i < _buttons.size(); ++i)
     {
         if (_buttons[i]->getChosen())
         {
@@ -175,7 +175,7 @@ void Menu::handleMouseRelease(const Posf mouse)
 
 bool Menu::buttonWasPressed() const
 {
-    for (unsigned int i = 0; i < _buttons.size(); ++i)
+    for (size_t i = 0; i < _buttons.size(); ++i)
     {
         if (_buttons[i]->getChosen())
             return true;
@@ -187,7 +187,7 @@ void Menu::display(GraphicWindow& window) const
 {
     window.draw(_bgImg);
 
-    for (unsigned int i = 0; i < _buttons.size(); ++i)
+    for (size_t i = 0; i < _buttons.size(); ++i)
     {
         _buttons[i]->draw(window);
     }
@@ -196,7 +196,7 @@ void Menu::display(GraphicWindow& window) const
 
 void Menu::cleanMouse()
 {
-    for (unsigned int i = 0; i < _buttons.size(); ++i)
+    for (size_t i = 0; i < _buttons.size(); ++i)
     {
         _buttons[i]->setInFocus(false);
         _buttons[i]->setChosen(false);

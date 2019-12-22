@@ -109,7 +109,7 @@ private:
     void updateVertexNeighbors(const Posb& vertex);
 
 
-    bool validPos(int i, int j) const;
+    bool validPos(size_t i, size_t j) const;
     bool validPos(const Posb& pos) const;
 
 

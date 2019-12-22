@@ -105,12 +105,12 @@ Board::GameObjects LevelBuilder::getLevel(size_t level,
         objects.boardSize = Posb(file.size(), file[0].size());
 
         objects.board.resize(objects.boardSize.i);
-        for (int i = 0; i < objects.boardSize.i; ++i) {
+        for (size_t i = 0; i < objects.boardSize.i; ++i) {
             objects.board.at(i).resize(objects.boardSize.j);
         }
 
         objects.FreeTiles.resize(objects.boardSize.i);
-        for (int i = 0; i < objects.boardSize.i; ++i) {
+        for (size_t i = 0; i < objects.boardSize.i; ++i) {
             objects.FreeTiles.at(i).resize(objects.boardSize.j, false);
 
         }
@@ -188,9 +188,9 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
 
             objects.posfMap.resize(objects.boardSize.i);
 
-            for (int i = 0; i < objects.boardSize.i; ++i)
+            for (size_t i = 0; i < objects.boardSize.i; ++i)
             {
-                for (int j = 0; j < objects.boardSize.j; ++j) {
+                for (size_t j = 0; j < objects.boardSize.j; ++j) {
                     objects.posfMap.at(i).push_back(pos);
                     pos.x += TILE_SIZE.x;
                 }
@@ -619,9 +619,9 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
     {
         try
         {
-            for (int row = posi.i - 1; row <= posi.i + 1; ++row)
+            for (size_t row = posi.i - 1; row <= posi.i + 1; ++row)
             {
-                for (int col = posi.j - 1; col <= posi.j + 1; ++col)
+                for (size_t col = posi.j - 1; col <= posi.j + 1; ++col)
                 {
                     if (0 <= row && row < file.size() && 0 <= col && col < file.at(row).size())
                     {

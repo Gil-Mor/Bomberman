@@ -154,7 +154,7 @@ void Dynamite::colide(Bonus& other)
 
 }
 
-int Dynamite::getExplosionRadius() const
+size_t Dynamite::getExplosionRadius() const
 {
     return _radius;
 }

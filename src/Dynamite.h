@@ -28,7 +28,7 @@ public:
 
     void kicked(Movable::Direction dir);
 
-    int getExplosionRadius() const;
+    size_t getExplosionRadius() const;
 
     // ----------- DOUBLE DISPATCH ------------
     virtual void colide(GameObject& other) override;

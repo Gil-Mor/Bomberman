@@ -205,7 +205,7 @@ void AIMap::updateDangers(const DynamitesList& dynamites, const ExplosionsList& 
         Posb dPos = dynamite->getPosb();
 
         bool stopUp = false, stopDown = false, stopRight = false, stopLeft = false;
-        for (int i = 0, j = 0; i <= dynamite->getExplosionRadius()+1; ++i, ++j)
+        for (size_t i = 0, j = 0; i <= dynamite->getExplosionRadius()+1; ++i, ++j)
         {
             if (stopUp && stopDown && stopRight && stopLeft) {
                 break;
@@ -312,11 +312,13 @@ void AIMap::setTileTypeToFree(const Posb& pos)
 }
 
 
-bool AIMap::validPos(int i, int j) const
+bool AIMap::validPos(size_t i, size_t j) const
 {
-    // TODO Fix signed comperasion.
-    return 0 <= i && i < _tiles.size()
-        && 0 <= j && j < _tiles[0].size();
+    if (i == Posb::INVALID_POS || j == Posb::INVALID_POS) {
+        return false;
+    }
+    return i < _tiles.size()
+        && j < _tiles[0].size();
 }
 
 bool AIMap::validPos(const Posb& pos) const

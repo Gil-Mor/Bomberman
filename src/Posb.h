@@ -8,13 +8,11 @@ Position on the board. row and column.
 class Posb
 {
 public:
-    Posb(int _i = -1, int _j = -1) : i(_i), j(_j) {};
+    static size_t INVALID_POS;
+    Posb(size_t _i = (size_t)(-1), size_t _j = (size_t)(-1)) : i(_i), j(_j) {};
     ~Posb() { };
 
-
-    int i, j;
-
-
+    size_t i, j;
 
     Posb& operator+= (const Posb& other) {
         i += other.i;

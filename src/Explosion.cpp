@@ -16,7 +16,7 @@ const float EXPLOSION_DURATION = 1;
 //static
 //Explosion::AnimationInfo Explosion::_animation;
 
-Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color,
+Explosion::Explosion(const Posf& posf, const Posb& posb, size_t radius, Color color,
     ExplosionsBoardProxy& explosionProxy)
     : Movable(posf, posb), _explosionProxy(explosionProxy), _radius(radius)
 {
@@ -28,7 +28,7 @@ Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color
 
 
 // private ctor
-Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color,
+Explosion::Explosion(const Posf& posf, const Posb& posb, size_t radius, Color color,
     Movable::Direction dir, ExplosionsBoardProxy& explosionProxy)
     : Movable(posf, posb), _explosionProxy(explosionProxy), _radius(radius)
 {
@@ -70,7 +70,7 @@ void Explosion::update()
     // if it's time to explode
     if (_propagate && _explosionProxy.getElapsedTime().asSeconds() - _explosionTime >= PROPAGATE_DURATION)
     {
-        int saveRadius = _radius;
+        size_t saveRadius = _radius;
         // center explosion propagate all 4 directions
         if (_center && _propagate)
         {
