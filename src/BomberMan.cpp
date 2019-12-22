@@ -14,7 +14,7 @@ const float HIT_DURATION = 2;
 const int MAX_HEALTH = 5;
 
 BomberMan::BomberMan(const Posf& posf, const Posb& posb)
-    : _bomberManProxy(*this), Movable(posf, posb)
+    : Movable(posf, posb), _bomberManProxy(*this)
 {
     _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(BOMBER_MAN_T));
     _animations = GraphicObjectsManager::getInstance().getBomberManAnimations();
@@ -128,7 +128,7 @@ BomberMan::Animations BomberMan::getAnimationFromDirection()
 
 void BomberMan::hitFromExplosion()
 {
-    if (_bomberManState == EXPLODING_A 
+    if (_bomberManState == EXPLODING_A // TODO change to _S
         || _bomberManState == LAST_EXPLOSION_S 
         || _bomberManState == COMPLETELY_DEAD_S) {
         return;

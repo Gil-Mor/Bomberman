@@ -27,7 +27,7 @@ public:
         DOWN,
         LEFT,
         RIGHT,
-        NUM_OF_DIRECTIONS
+        UNDEFINED
     }; 
 
     Movable(const Posf& posf, const Posb& posi);

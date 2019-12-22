@@ -18,9 +18,9 @@ AIMap::AIMap(const FreeTilesMap& freeTiles)
 
     _tiles.resize(freeTiles.size());
 
-    for (int i = 0; i < freeTiles.size(); ++i)
+    for (size_t i = 0; i < freeTiles.size(); ++i)
     {
-        for (int j = 0; j < freeTiles[i].size(); ++j)
+        for (size_t j = 0; j < freeTiles[i].size(); ++j)
         {
             vertex_d vertexDescriptor = boost::add_vertex(_graph);
 
@@ -40,9 +40,9 @@ AIMap::AIMap(const FreeTilesMap& freeTiles)
     }
 
     // connect neighbors
-    for (int i = 0; i < _tiles.size(); ++i)
+    for (size_t i = 0; i < _tiles.size(); ++i)
     {
-        for (int j = 0; j < _tiles[i].size(); ++j)
+        for (size_t j = 0; j < _tiles[i].size(); ++j)
         {
             if (_tiles[i][j].isFree())
                 updateVertexNeighbors(Posb(i, j));
@@ -52,7 +52,7 @@ AIMap::AIMap(const FreeTilesMap& freeTiles)
 
     // prepere danger map
     _dangerMap.resize(_tiles.size());
-    for (int i = 0; i < _tiles.size(); ++i) {
+    for (size_t i = 0; i < _tiles.size(); ++i) {
         _dangerMap[i].resize(_tiles[i].size(), DangerType::NONE_D);
     }
 
@@ -165,7 +165,7 @@ bool AIMap::checkStopCondition(const vertex_d& d, BfsStopCondition stopCondition
 
 
         default:
-            break;
+            return false; // TODO: check
     }
 }
 
@@ -314,6 +314,7 @@ void AIMap::setTileTypeToFree(const Posb& pos)
 
 bool AIMap::validPos(int i, int j) const
 {
+    // TODO Fix signed comperasion.
     return 0 <= i && i < _tiles.size()
         && 0 <= j && j < _tiles[0].size();
 }

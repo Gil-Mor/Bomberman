@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10.2)  # CMake version check
 project(Bomberman)                      # Create project "simple_example"
 set(CMAKE_CXX_STANDARD 14)              # Enable c++14 standard
 
-# add_compile_options(-Wall)
+add_compile_options(-Wall -Wno-switch)
 
 set(SOURCES 
     src/AIEnemy.cpp

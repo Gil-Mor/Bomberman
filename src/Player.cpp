@@ -156,22 +156,21 @@ Movable::Direction Player::keyToDirection(sf::Keyboard::Key key) const
         case sf::Keyboard::Up:
         case sf::Keyboard::W:
             return Player::UP;
-            break;
 
         case sf::Keyboard::Down:
         case sf::Keyboard::S:
             return Player::DOWN;
-            break;
 
         case sf::Keyboard::Left:
         case sf::Keyboard::A:
             return Player::LEFT;
-            break;
 
         case sf::Keyboard::Right:
         case sf::Keyboard::D:
             return Player::RIGHT;
-            break;
+
+        default:
+        return Player::UNDEFINED;
     }
 
 }

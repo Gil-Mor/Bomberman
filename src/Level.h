@@ -53,16 +53,14 @@ public:
 
 private:
 
+    ControllerProxy& _controller;
+    LevelProxy _levelProxy;
     Board _board;
 
     Sprite _bgImg;
 
     GameClock _clock;
     int _levelTime = 0;
-
-
-    LevelProxy _levelProxy;
-    ControllerProxy& _controller;
 
     void handleKeyboard(sf::Keyboard::Key key);
 

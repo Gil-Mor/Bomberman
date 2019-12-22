@@ -34,7 +34,7 @@ private:
     vector<Sprite> _pages;
 
     // the current page were at.
-    int _currPage = PAGE_ONE;
+    size_t _currPage = PAGE_ONE;
 
     void setButtons();
 

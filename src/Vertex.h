@@ -22,21 +22,15 @@ public:
     //void setDescriptor(vertex_d d);
     const vertex_d& getDescriptor() const;
 
-
     void setToFree();
 
     bool isFree() const;
 
-
 private:
-
-    bool _isFree;
-
+    Posb _posb;
     // boost graph vertex descriptor. 
     vertex_d _vertex_d;
-
-    Vertex* _predecessor = nullptr;
-
-    Posb _posb;
+    bool _isFree;
+    Vertex* _predecessor = nullptr;    
 };
 

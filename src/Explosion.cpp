@@ -18,7 +18,7 @@ const float EXPLOSION_DURATION = 1;
 
 Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color,
     ExplosionsBoardProxy& explosionProxy)
-    : Movable(posf, posb), _radius(radius), _explosionProxy(explosionProxy)
+    : Movable(posf, posb), _explosionProxy(explosionProxy), _radius(radius)
 {
     _center = true;
     _propagate = true;
@@ -30,7 +30,7 @@ Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color
 // private ctor
 Explosion::Explosion(const Posf& posf, const Posb& posb, int radius, Color color,
     Movable::Direction dir, ExplosionsBoardProxy& explosionProxy)
-    : Movable(posf, posb), _radius(radius), _explosionProxy(explosionProxy)
+    : Movable(posf, posb), _explosionProxy(explosionProxy), _radius(radius)
 {
 
     _direction = dir;

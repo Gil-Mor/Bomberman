@@ -64,7 +64,6 @@ public:
 
     virtual void colide(BomberMan& other) = 0;
 
-
 protected:
 
     // general proxy for all objects. 
@@ -72,13 +71,9 @@ protected:
     //  on construction because the board doesn't exist when they are create.
     // they need the elapsed time
     BoardProxy* _boardProxy;
-
-
-    Posb _posb;
     Posf _posf;
-
+    Posb _posb;
     Sprite _sprite;
-
 
     // for objects with animation, restores their texture rect to 
     // the position of the first frame.

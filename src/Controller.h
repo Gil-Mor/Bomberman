@@ -21,9 +21,6 @@ using std::string;
 class Controller
 {
 public:
-    
-
-
     Controller();
     ~Controller();
 
@@ -50,9 +47,16 @@ public:
     void setNextLevel(int level);
     void loadNextLevel();
 
-
-
 private:
+
+    // Initualized in ctor
+    ControllerProxy _proxy;
+    MainMenu _mainMenu;
+    GameMenu _gameMenu;
+    PauseMenu _pauseMenu;
+    LevelsMenu _levelsMenu;
+    InstructionPage _instructionPages;
+    Level _level; // has to save the level for pausing and resuming.
 
     // indicates that the Controller was successfully built.
     bool _buildSuccess = true;
@@ -71,20 +75,13 @@ private:
     already initialized. */
     GraphicWindow _window;
 
-    ControllerProxy _proxy;
+    
 
-    // has to save the level for pausing and resuming.
-    Level _level;
+    
 
-    MainMenu _mainMenu;
+    
 
-    GameMenu _gameMenu;
-
-    PauseMenu _pauseMenu;
-
-    LevelsMenu _levelsMenu;
-
-    InstructionPage _instructionPages;
+    
 
     // proporties are set by buttons and are sent to the level builder.
     struct LevelProporties

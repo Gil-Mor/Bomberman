@@ -22,9 +22,7 @@ public:
     void action() const override;
 
 private:
-
-    InstructionPage& _page;
-
     Direction _dir;
+    InstructionPage& _page;
 };
 

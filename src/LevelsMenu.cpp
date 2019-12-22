@@ -1,5 +1,5 @@
 #include "LevelsMenu.h"
-#include "ControllerProxy.h";
+#include "ControllerProxy.h"
 #include "LevelButton.h"
 #include "GraphicObjectsManager.h"
 

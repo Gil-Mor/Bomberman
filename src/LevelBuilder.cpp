@@ -212,9 +212,9 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
         {
             vector<Posb> teleports; // used to save teleports positions for coupling them at the end.
 
-            for (int i = 0; i < file.size(); ++i)
+            for (size_t i = 0; i < file.size(); ++i)
             {
-                for (int j = 0; j < file.at(i).size(); ++j)
+                for (size_t j = 0; j < file.at(i).size(); ++j)
                 {
                     posb = { i, j };
 
@@ -556,8 +556,9 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
             for (size_t i = 0; i < _teleports.size(); ++i)
             {
                 Posb pos(_teleports[i]);
-                // [0] because the teleport have to be in th upper layer...
-                if (tmp1 = dynamic_cast<Teleport*>(objects.board.at(pos.i).at(pos.j).begin()->get())) {
+                // [0] because the teleport have to be in the upper layer...
+                tmp1 = dynamic_cast<Teleport*>(objects.board.at(pos.i).at(pos.j).begin()->get());
+                if (tmp1 != nullptr) {
 
                     id1 = tmp1->getID();
                 }
@@ -570,7 +571,8 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
                 for (size_t j = i + 1; j < _teleports.size(); ++j)
                 {
                     Posb pos(_teleports[j]);
-                    if (tmp2 = dynamic_cast<Teleport*>(objects.board.at(pos.i).at(pos.j).front().get())) {
+                    tmp2 = dynamic_cast<Teleport*>(objects.board.at(pos.i).at(pos.j).front().get());
+                    if (tmp2 != nullptr) {
 
                         id2 = tmp2->getID();
                     }
@@ -594,7 +596,8 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
             for (size_t i = 0; i < _teleports.size(); ++i)
             {
                 Posb pos(_teleports[i]);
-                if (tmp1 = dynamic_cast<Teleport*>(objects.board.at(pos.i).at(pos.j).begin()->get()))
+                tmp1 = dynamic_cast<Teleport*>(objects.board.at(pos.i).at(pos.j).begin()->get());
+                if (tmp1 != nullptr)
                 {
                     if (!tmp1->getHasTwin()) {
                         Logger::getInstance().log("there's a teleport with out a twin. teleport's id is " + tmp1->getID());

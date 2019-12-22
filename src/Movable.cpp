@@ -18,6 +18,10 @@ Movable::~Movable()
 
 bool Movable::tryMove(const Direction dir)
 {
+    if (dir == Direction::UNDEFINED) {
+        return false;
+    }
+
     _movedTile = false;
     _direction = dir;
 

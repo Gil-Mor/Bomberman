@@ -25,9 +25,6 @@ Board::Board(LevelProxy& level)
 
 {
     _bgImg.setColor({ 255, 255, 255, 50 });
-
-
-
 }
 
 
@@ -110,9 +107,6 @@ Board::~Board()
 
 void Board::update()
 {
-
-
-    int i = 0, j = 0;
     for (auto& line : _board)
     {
         for (auto& tile : line)

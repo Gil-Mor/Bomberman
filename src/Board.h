@@ -43,18 +43,14 @@ public:
         {
         }
 
-        FreeTilesMap FreeTiles;
-
         board3d board;
-
         vector<player_p> players;
         vector<enemy_p> enemies;
-
-        int levelTime = 180;
-        Posb boardSize;
-
         // fixed tiles positions
         PosfMap posfMap;
+        FreeTilesMap FreeTiles;
+        int levelTime = 180;
+        Posb boardSize;
     };
 
 
@@ -125,7 +121,7 @@ public:
     {
         bool gameEnded = false;
         float endTime = 0;
-        int numOfDeadPlayers = 0;
+        size_t numOfDeadPlayers = 0;
         bool playersWon = false, enemiesWon = false;
 
     }_results;
@@ -138,6 +134,14 @@ public:
 
 private:
 
+    // --------- PROXIES -----------
+    LevelProxy& _levelProxy;
+    BoardProxy _boardProxy;
+    EnemyBoardProxy _enemyProxy;
+    // given to dynamites and explosions.
+    ExplosionsBoardProxy _explosionProxy;
+    //======================================
+
     // the board.
     board3d _board;
 
@@ -147,37 +151,19 @@ private:
     vector<player_p> _players;
     vector<enemy_p> _enemies;
 
-
     // faster addition and removal..
     // dynamites could be a deque if we trust timing completely 
     // but explosions can get more complicated..
     DynamitesList _dynamites;
     ExplosionsList _explosions;
 
-
-
     // ---- AI stuff ---------
     AIMap _AIMap;
-
-    EnemyBoardProxy _enemyProxy;
-
-
     // BoardBuffer. 
     // at the end of each frame we'll remove objects marked for removal from the board.
     BoardBuffer _buffer;
-
-    // --------- PROXIES -----------
-    BoardProxy _boardProxy;
-
-    // given to dynamites and explosions.
-    ExplosionsBoardProxy _explosionProxy;
-
-    LevelProxy& _levelProxy;
-
-    //======================================
-
-
     LevelStatusBar _statusBar;
+
     // ==================== HANDLE INPUT ==============
 
     bool player1Key(sf::Keyboard::Key key) const;

@@ -193,8 +193,7 @@ void Level::handleKeyboard(sf::Keyboard::Key key)
             }
         }
     }
-    else if (_state == RUN_S);
-    {
+    else if (_state == RUN_S) {
         _board.playPlayers(key);
     }
 }

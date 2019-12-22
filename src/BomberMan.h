@@ -27,7 +27,6 @@ public:
         EXPLODING_S,
         LAST_EXPLOSION_S,
         COMPLETELY_DEAD_S
-
     };
 
     enum Animations
@@ -37,7 +36,6 @@ public:
         LEFT_A,
         RIGHT_A,
         EXPLODING_A,
-
         NUM_OF_BOMBERMAN_ANIMATIONS
     };
 
@@ -75,11 +73,13 @@ public:
 
 
 protected:
-
+    // proxy that BomberMan gives to it's dynamites so that they can
+    // call back to him when they explode, incrementing it's available 
+    // dynamites count.
+    BomberManProxy _bomberManProxy;
 
     State _bomberManState = PLAYING_S;
-
-
+    
     int _health = 3;
 
     // The explosion radius of the bombs this BomberMan puts.
@@ -97,11 +97,7 @@ protected:
 
     void updateAnimation();
  
-
-    // proxy that BomberMan gives to it's dynamites so that they can
-    // call back to him when they explode, incrementing it's available 
-    // dynamites count.
-    BomberManProxy _bomberManProxy;
+    
 
     // save info about hit
     struct Hit
@@ -118,7 +114,6 @@ protected:
 
     GameSound_p _dyingSound;
 
-
 private:
 
     float _lastTeleportation = TELEPORTATION_GAP;
@@ -127,12 +122,7 @@ private:
 
     Animations _currAnimation = UP_A;
 
-
-
     // if bomberman can kick dynamites.
     bool _kickability = false;
-
-
-
 };
 

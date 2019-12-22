@@ -175,7 +175,6 @@ void AgressiveEnemy::updateState()
             break;
         }
     }
-
 }
 
 
@@ -185,14 +184,14 @@ bool AgressiveEnemy::agressiveTimeToMove()
     {
         case ATTACKING_S:
             return timeToMove(AGRESSIVE_ATTACK_MOVE_PAUSE);
-            break;
 
         case RUNAWAY_S:
             return timeToMove(AGRESSIVE_RUNAWAY_MOVE_PAUSE);
-            break;
 
         case IN_SHELTER_S:
             return timeToMove(AGRESSIVE_ATTACK_MOVE_PAUSE);
-            break;
+
+        default:
+           return false;
     }
 }

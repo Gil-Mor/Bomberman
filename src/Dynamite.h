@@ -51,16 +51,15 @@ public:
 
 private:
 
-    ExplosionsBoardProxy& _dynamiteProxy;
-
     // Dynamite explosion radius.
     // explosion is the size of radius*tileSize
     size_t _radius = 2;
-
-    void explode();
-
     // let the owner know when this exploded.
     BomberManProxy& _owner;
+
+    ExplosionsBoardProxy& _dynamiteProxy;
+
+    void explode();
 
     // time when the dynamite was placed.
     float _triggeredTime = 0;
