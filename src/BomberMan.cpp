@@ -128,7 +128,7 @@ BomberMan::Animations BomberMan::getAnimationFromDirection()
 
 void BomberMan::hitFromExplosion()
 {
-    if (_bomberManState == EXPLODING_A // TODO change to _S
+    if (_bomberManState == EXPLODING_S
         || _bomberManState == LAST_EXPLOSION_S 
         || _bomberManState == COMPLETELY_DEAD_S) {
         return;
