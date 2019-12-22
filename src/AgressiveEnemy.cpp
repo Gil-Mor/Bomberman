@@ -40,7 +40,7 @@ void AgressiveEnemy::update()
 
         case BomberMan::PLAYING_S:
         {
-            //updateState();
+            // updateState();
 
             if (!agressiveTimeToMove()) {
                 break;
@@ -67,12 +67,14 @@ void AgressiveEnemy::update()
                 case REACHED_TARGET_S:
                 {
                     placeDynamite(*_enemyProxy);
-                    if (inDanger()) {
-                        goToRunAwayState();
-                        break;
-                    }
+                    // TODO new - immidiatly runaway after placing dynamite.
+                    goToRunAwayState();
+                    // if (inDanger()) {
+                    //     goToRunAwayState();
+                    //     break;
+                    // }
 
-                    goToAttackState();
+                    // goToAttackState();
                     break;
                 }
 
@@ -106,22 +108,17 @@ void AgressiveEnemy::update()
                 }
 
             }
-
+            break;
         }
-
         default:
             break;
     }
 
     updateAnimation();
-
-
-
 }
 
 void AgressiveEnemy::updateState()
 {
-
     switch (_enemyState)
     {
         case ATTACKING_S:
@@ -192,6 +189,6 @@ bool AgressiveEnemy::agressiveTimeToMove()
             return timeToMove(AGRESSIVE_ATTACK_MOVE_PAUSE);
 
         default:
-           return false;
+           return true; // TODO ?
     }
 }

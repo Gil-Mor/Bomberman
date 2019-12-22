@@ -4,6 +4,12 @@ set(CMAKE_CXX_STANDARD 14)              # Enable c++14 standard
 
 add_compile_options(-Wall -Wno-switch)
 
+IF (NOT CMAKE_BUILD_TYPE)
+    message(STATUS "Setting CMAKE_BUILD_TYPE TO Debug")
+    SET(CMAKE_BUILD_TYPE Debug)
+    message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+ENDIF ()
+
 set(SOURCES 
     src/AIEnemy.cpp
     src/AIMap.cpp

@@ -43,8 +43,6 @@ void AIEnemy::setEnemyProxy(EnemyBoardProxy* enemyProxy)
 AIEnemy::~AIEnemy()
 {}
 
-
-
 bool AIEnemy::inDanger() const
 {
     return dangerousPos(_posb, DangerType::EXPLOSION_POTENTIAL_D);
@@ -80,7 +78,7 @@ void AIEnemy::continueInRunAwayPath()
 
     Posb nextPos = _runAway.path.top();
 
-    _runAway.path.pop();
+    
 
     OptionalDirections options = directionToPos(nextPos);
 
@@ -92,6 +90,7 @@ void AIEnemy::continueInRunAwayPath()
         {
             if (tryMove(_direction)) {
                 setMoveOnBoard();
+                _runAway.path.pop();  // pop next position only if we moved.
                 return;
             }
             else {
@@ -109,7 +108,7 @@ void AIEnemy::continueInAttackPath()
     }
 
     Posb nextPos = _attack.path.top();
-    _attack.path.pop();
+    
     OptionalDirections options = directionToPos(nextPos);
 
     while (!options.empty())
@@ -121,6 +120,7 @@ void AIEnemy::continueInAttackPath()
         {
             if (tryMove(_direction)) {
                 setMoveOnBoard();
+                _attack.path.pop(); // pop next position only if we moved.
                 return;
             }
             else {

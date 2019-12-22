@@ -36,6 +36,7 @@ public:
     AIEnemy(const Posf& posf, const Posb& posb, int enemyNum);
 
     void setEnemyProxy(EnemyBoardProxy* enemyProxy);
+    void goToAttackState();
 
     virtual ~AIEnemy() = 0;
 
@@ -49,9 +50,7 @@ protected:
         Path path;
 
     }_attack;
-
-
-    void goToAttackState();
+    
     void continueInAttackPath();
     bool finishedAttackPath();
 

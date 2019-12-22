@@ -41,7 +41,6 @@ void Board::setBoard(GameObjects objects)
     _enemies = std::move(objects.enemies);
     _posfMap = std::move(objects.posfMap);
 
-
     _bgImg.setSize({ float(_board.at(0).size())*TILE_SIZE.x, float(_board.size())*TILE_SIZE.y });
     _bgImg.setPosition(_posfMap.at(0).at(0));
 
@@ -53,12 +52,12 @@ void Board::setBoard(GameObjects objects)
         }
     }
 
-
     for (auto& enemy : _enemies) {
         enemy->setEnemyProxy(&_enemyProxy);
+
+        // TODO new - make sure attack path isn't empty
+        enemy->goToAttackState();
     }
-
-
 }
 
 
