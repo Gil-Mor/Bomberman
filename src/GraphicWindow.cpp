@@ -8,9 +8,7 @@ GraphicWindow::GraphicWindow()
 }
 void GraphicWindow::initWindow()
 {
-    _window.create(sf::VideoMode::getFullscreenModes()[0], "I Blow Things Up", sf::Style::Default);
-    _window.setSize({ _window.getSize().x - 15, _window.getSize().y - 80});
-
+    _window.create(sf::VideoMode::getFullscreenModes()[0], "I Blow Things Up", sf::Style::Fullscreen);
     _window.setFramerateLimit(60);
 }
 
