@@ -115,6 +115,5 @@ void Teleport::colide(Explosion& other)
 void Teleport::colide(BomberMan& other)
 {
     activate();
-
     other.colide(*this);
 }

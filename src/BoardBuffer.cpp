@@ -23,7 +23,7 @@ void BoardBuffer::update(board3d& board, PosfMap& posfMap,
 
     moveOnBoard(board);
 
-    addToBoard(board, posfMap, dynamites, explosions);
+    addToBoard(board, dynamites, explosions);
 }
 
 void BoardBuffer::moveOnBoard(board3d& board)
@@ -43,7 +43,7 @@ void BoardBuffer::moveOnBoard(board3d& board)
 }
 
 
-void BoardBuffer::addToBoard(board3d& board, PosfMap& posfMap, 
+void BoardBuffer::addToBoard(board3d& board,
     DynamitesList& dynamites, ExplosionsList& explosions)
 {
 

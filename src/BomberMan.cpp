@@ -174,29 +174,34 @@ void BomberMan::colide(Dynamite& other)
 
 void BomberMan::colide(Explosion& other)
 {
+    (void)other;
     hitFromExplosion();
     _movedTile = true;
 }
 
 void BomberMan::colide(BomberMan& other)
 {
+    (void)other;
     _movedTile = true;
 }
 
 
 void BomberMan::colide(FreeTile& other)
 {
+    (void)other;
     _movedTile = true;
 
 }
 
 void BomberMan::colide(StoneWall& other)
 {
+    (void)other;
     _movedTile = false;
 }
 
 void BomberMan::colide(ExplodingWall& other)
 {
+    (void)other;
     _movedTile = false;
 }
 

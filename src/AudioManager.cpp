@@ -95,12 +95,9 @@ void AudioManager::volumeUp()
 {
     float vol = _soundTrack->getVolume();
 
-    if (vol >= 100)
-        return;
-
-    if (vol > 90)
+    if (vol > 90) {
     _soundTrack->setVolume(100);
-
+    }
     else {
         _soundTrack->setVolume(vol + 10);
 
@@ -112,17 +109,12 @@ void AudioManager::volumeDown()
 {
     float vol = _soundTrack->getVolume();
 
-    if (vol == 0)
-        return;
-
-    if (vol < 10)
+    if (vol < 10) {
         _soundTrack->setVolume(0);
-
+    }
     else {
         _soundTrack->setVolume(vol - 10);
-
     }
-
 }
 
 

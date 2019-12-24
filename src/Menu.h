@@ -57,8 +57,8 @@ protected:
 
     void handleMouseMove(const Posf mouse);
     void handleMouseDrag(const Posf mouse);
-    void handleMousePress(const Posf  mouse);
-    void handleMouseRelease(const Posf mouse);
+    void handleMousePress();
+    void handleMouseRelease();
 
     void cleanMouse();
     bool buttonWasPressed() const;

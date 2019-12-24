@@ -19,10 +19,10 @@ class Sprite
 {
 public:
 
-    Sprite();
+    Sprite() = default;
     Sprite(const Posf& size);
 
-    ~Sprite();
+    virtual ~Sprite() = default;
 
     virtual void draw(GraphicWindow& window);
 

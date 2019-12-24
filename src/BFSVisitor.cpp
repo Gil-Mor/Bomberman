@@ -22,9 +22,3 @@ void BFSVisitor::initializeVertex(const vertex_d& d)
     _mapProxy.initializeVertex(d);
 }
 
-void BFSVisitor::setVertexPredecessor(const vertex_d& d)
-{
-    _mapProxy.setVertexPredecessor(d);
-}
-
-

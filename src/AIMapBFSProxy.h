@@ -19,8 +19,6 @@ public:
 
     void setVertexPredecessor(const edge_d& e);
 
-    void setVertexPredecessor(const vertex_d& d);
-
     bool checkStopCondition(const vertex_d& d);
 
 private:

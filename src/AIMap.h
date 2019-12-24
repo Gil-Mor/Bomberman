@@ -71,7 +71,6 @@ public:
     // for bfs visitor proxy
     void initializeVertex(const vertex_d& d);
     void setVertexPredecessor(const edge_d& e);
-    void setVertexPredecessor(const vertex_d& d);
 
     bool checkStopCondition(const vertex_d& d, BfsStopCondition stopCondition);
 

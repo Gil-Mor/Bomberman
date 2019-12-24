@@ -56,7 +56,7 @@ private:
     Bonus::BonusType randomBonus(int r) const;
     //void placeExplodingWallWithBonus(int type, const Posb& posb, Board::GameObjects& board) const;
 
-    void fillWithBomberMan(size_t level, size_t numOfPlayers,
+    void fillWithBomberMan(size_t numOfPlayers,
         size_t numOfEnemies, Board::GameObjects& objects) const;
 
     //bool corner(const Posb& posi, const Posb& boardsize) const;

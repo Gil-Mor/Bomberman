@@ -1,18 +1,9 @@
 #include "Sprite.h"
 #include "GraphicWindow.h"
 
-Sprite::Sprite()
-{
-}
-
 Sprite::Sprite(const Posf& size)
 {
     _sprite.setSize(size);
-}
-
-
-Sprite::~Sprite()
-{
 }
 
 sf::RectangleShape& Sprite::getSprite()

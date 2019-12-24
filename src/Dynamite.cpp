@@ -103,12 +103,14 @@ void Dynamite::colide(GameObject& other)
 
 void Dynamite::colide(Dynamite& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
 }
 
 void Dynamite::colide(Explosion& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
 
@@ -116,6 +118,7 @@ void Dynamite::colide(Explosion& other)
 
 void Dynamite::colide(BomberMan& other)
 {
+    (void)other;
     _movedTile = false;
     _moving = false;
 }
@@ -123,19 +126,20 @@ void Dynamite::colide(BomberMan& other)
 
 void Dynamite::colide(FreeTile& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
-
 }
 
 void Dynamite::colide(StoneWall& other)
 {
+    (void)other;
     _movedTile = false;
-
 }
 
 void Dynamite::colide(ExplodingWall& other)
 {
+    (void)other;
     _movedTile = false;
 }
 
@@ -149,9 +153,9 @@ void Dynamite::colide(Teleport& other)
 
 void Dynamite::colide(Bonus& other)
 {
+    (void)other;
     _movedTile = true;
     _moving = true;
-
 }
 
 size_t Dynamite::getExplosionRadius() const

@@ -260,8 +260,8 @@ tile& Board::getTile(const Posb& pos)
 
 bool Board::validPosb(const Posb& posb) const
 {
-    return 0 <= posb.i && posb.i < _board.size()
-        && 0 <= posb.j && posb.j < _board.at(posb.i).size();
+    return posb.i < _board.size()
+        && posb.j < _board.at(posb.i).size();
 }
 
 

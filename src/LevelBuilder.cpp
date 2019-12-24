@@ -118,7 +118,7 @@ Board::GameObjects LevelBuilder::getLevel(size_t level,
 
         fillPositionMap(windowSize, objects);
 
-        fillWithBomberMan(level, numOfPlayers, numOfEnemies, objects);
+        fillWithBomberMan(numOfPlayers, numOfEnemies, objects);
 
         fillFromFile(objects, file);
 
@@ -362,7 +362,7 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
     }
 
 
-    void LevelBuilder::fillWithBomberMan(size_t level, size_t numOfPlayers,
+    void LevelBuilder::fillWithBomberMan(size_t numOfPlayers,
         size_t numOfEnemies, Board::GameObjects& objects) const
     {
         try
@@ -623,9 +623,8 @@ std::pair<bool, int> LevelBuilder::getLevelTime(ifstream& file) const
             {
                 for (size_t col = posi.j - 1; col <= posi.j + 1; ++col)
                 {
-                    if (0 <= row && row < file.size() && 0 <= col && col < file.at(row).size())
+                    if (row < file.size() && col < file.at(row).size())
                     {
-
                         if (isdigit(file.at(row).at(col))) {
                             return file.at(row).at(col) - 48;
                         }

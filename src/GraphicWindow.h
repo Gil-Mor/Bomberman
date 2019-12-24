@@ -19,7 +19,7 @@ class GraphicWindow
 public:
 
     GraphicWindow();
-
+    virtual ~GraphicWindow() = default;
 
     virtual void clearScreen();
 
@@ -35,8 +35,6 @@ public:
     virtual void display();
 
     virtual void close();
-
-    void initWindow();
 
     Posf getSizeF() const;
 

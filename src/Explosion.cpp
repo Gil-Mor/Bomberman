@@ -160,14 +160,14 @@ void Explosion::colide(GameObject& other)
 
 void Explosion::colide(Dynamite& other)
 {
+    (void)other;
     _movedTile = true;
-
 }
 
 void Explosion::colide(Explosion& other)
 {
+    (void)other;
     _movedTile = true;
-
 }
 
 void Explosion::colide(BomberMan& other)
@@ -179,12 +179,13 @@ void Explosion::colide(BomberMan& other)
 
 void Explosion::colide(FreeTile& other)
 {
+    (void)other;
     _movedTile = true;
-
 }
 
 void Explosion::colide(StoneWall& other)
 {
+    (void)other;
     _propagate = false;
     _movedTile = false;
 }
@@ -199,10 +200,12 @@ void Explosion::colide(ExplodingWall& other)
 
 void Explosion::colide(Teleport& other)
 {
+    (void)other;
     _movedTile = true;
 }
 
 void Explosion::colide(Bonus& other)
 {
+    (void)other;
     _movedTile = true;
 }

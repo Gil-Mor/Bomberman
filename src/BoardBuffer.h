@@ -79,8 +79,7 @@ private:
         vector<explosion_up> explosions;
     } _addBuffer;
 
-    void addToBoard(board3d& board, PosfMap& posfMap, DynamitesList& dynamite,
-        ExplosionsList& explosions);
+    void addToBoard(board3d& board, DynamitesList& dynamite, ExplosionsList& explosions);
 
 
     // ---------- MOVE ----------------

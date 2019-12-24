@@ -48,19 +48,11 @@ void Menu::run(GraphicWindow& window)
                     }
                     break;
                 }
-                // catch the resize events
-                if (event.type == sf::Event::Resized)
-                {
-                    // update the view to the new size of the window
-                    sf::FloatRect visible(0.f, 0.f, (float)event.size.width, (float)event.size.height);
-                    sfWindow.setView(sf::View(visible));
-                }
                 case sf::Event::MouseButtonPressed:
                 {
                     if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        handleMousePress(mouse);
-
+                        handleMousePress();
                     }
                     break;
                 }
@@ -69,8 +61,7 @@ void Menu::run(GraphicWindow& window)
                 {
                     if (event.mouseButton.button == sf::Mouse::Left)
                     {
-                        handleMouseRelease(mouse);
-
+                        handleMouseRelease();
                     }
                     break;
                 }
@@ -146,7 +137,7 @@ void Menu::handleMouseDrag(const Posf mouse)
     }
 }
 
-void Menu::handleMousePress(const Posf mouse)
+void Menu::handleMousePress()
 {
     for (size_t i = 0; i < _buttons.size(); ++i)
     {
@@ -162,7 +153,7 @@ void Menu::handleMousePress(const Posf mouse)
     }
 }
 
-void Menu::handleMouseRelease(const Posf mouse)
+void Menu::handleMouseRelease()
 {
     for (size_t i = 0; i < _buttons.size(); ++i)
     {

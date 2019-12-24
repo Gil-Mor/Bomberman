@@ -187,12 +187,6 @@ void AIMap::setVertexPredecessor(const edge_d& e)
     descriptorToVertex(target)->setPredecessor(descriptorToVertex(source));
 }
 
-void AIMap::setVertexPredecessor(const vertex_d& d)
-{
-    //descriptorToVertex(d);
-}
-
-
 void AIMap::updateDangers(const DynamitesList& dynamites, const ExplosionsList& explosions)
 {
     for (auto& vec : _dangerMap)

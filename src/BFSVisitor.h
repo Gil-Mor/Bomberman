@@ -19,9 +19,6 @@ public:
 
     void setVertexPredecessor(const edge_d& e);
 
-    void setVertexPredecessor(const vertex_d& e);
-
-
     bool checkStopCondition(const vertex_d& d);
 
     template < typename Edge, typename Graph >
@@ -43,10 +40,9 @@ public:
     template < typename Vertex, typename Graph >
     void initialize_vertex(Vertex u, const Graph& g)
     {
+        (void)g;
         initializeVertex(u);
     }
-
-
 
 private:
 

@@ -1,8 +1,30 @@
 cmake_minimum_required(VERSION 3.10.2)  # CMake version check
 project(Bomberman)                      # Create project "simple_example"
-set(CMAKE_CXX_STANDARD 14)              # Enable c++14 standard
 
-add_compile_options(-Wall -Wno-switch)
+set(CMAKE_CXX_STANDARD 14)              # Enable c++14 standard
+add_compile_options(
+    # Dialect options
+    -Wdelete-non-virtual-dtor
+    -Wnoexcept
+    -Wnon-virtual-dtor
+    -Wstrict-null-sentinel
+    # Warning options
+    -Wall
+    -Wextra
+    -Werror
+    -Wdouble-promotion
+    -Wunused-but-set-variable
+    -Wunused-local-typedefs
+    -Wfloat-equal
+    -Wunused-macros
+    -Wlogical-op
+    -Wredundant-decls
+    -Wvariadic-macros
+    -Wstack-protector
+    -Woverlength-strings
+    # Ignore SFML errors
+    -Wno-switch
+)
 
 IF (NOT CMAKE_BUILD_TYPE)
     message(STATUS "Setting CMAKE_BUILD_TYPE TO Debug")
@@ -10,7 +32,7 @@ IF (NOT CMAKE_BUILD_TYPE)
     message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
 ENDIF ()
 
-set(SOURCES 
+set(SOURCES
     src/AIEnemy.cpp
     src/AIMap.cpp
     src/AIMapBFSProxy.cpp
@@ -70,7 +92,7 @@ set(SOURCES
 
 add_executable(bomberman ${SOURCES})
 target_include_directories(bomberman
-    PRIVATE    
+    PRIVATE
         src
 )
 
