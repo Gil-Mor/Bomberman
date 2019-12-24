@@ -40,7 +40,7 @@ void showErrorMessage(const string& message)
 
     text.setFont(font);
 
-    text.setColor(sf::Color::Blue);
+    text.setFillColor(sf::Color::Blue);
 
     text.setString(message);
 

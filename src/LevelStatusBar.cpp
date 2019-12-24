@@ -40,7 +40,7 @@ LevelStatusBar::LevelStatusBar()
 
     _font = GraphicObjectsManager::getInstance().getOrbitronFont();
     _text.setFont(_font);
-    _text.setColor({ 220, 39, 73, 255 });
+    _text.setFillColor({ 220, 39, 73, 255 });
     _text.setCharacterSize(TEXT_SIZE);
     
 
