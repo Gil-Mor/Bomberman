@@ -49,6 +49,10 @@ public:
 
 private:
 
+    /* Interface for using SFML RenderWindow. 
+    already initialized. */
+    GraphicWindow _window;
+
     // Initualized in ctor
     ControllerProxy _proxy;
     MainMenu _mainMenu;
@@ -69,19 +73,6 @@ private:
     // from the pause menu or from main menu. how can the controller
     // know where to go after he leaves instruction pages?
     ControllerState _prevState = ControllerState::MAIN_MENU;
-
-
-    /* Interface for using SFML RenderWindow. 
-    already initialized. */
-    GraphicWindow _window;
-
-    
-
-    
-
-    
-
-    
 
     // proporties are set by buttons and are sent to the level builder.
     struct LevelProporties

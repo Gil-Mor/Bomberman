@@ -32,8 +32,6 @@ Level::Level(ControllerProxy& controller)
 
     _loseScreen.setTexture(GraphicObjectsManager::getInstance().getTexture(LOSE_SCREEN_T));
     _loseScreen.setSize({ _controller.getWindowSize().x - 50, 400 });
-    _loseScreen.setPosition({ 0, 300 });
-
 
     _loseScreen.setPosition({ (_controller.getWindowSize().x - _loseScreen.getSize().x )/ 2,
         (_controller.getWindowSize().y - _loseScreen.getSize().y) / 2 });

@@ -9,7 +9,7 @@ class Posb
 {
 public:
     static size_t INVALID_POS;
-    Posb(size_t _i = (size_t)(-1), size_t _j = (size_t)(-1)) : i(_i), j(_j) {};
+    Posb(size_t _i = INVALID_POS, size_t _j = INVALID_POS) : i(_i), j(_j) {};
     ~Posb() { };
 
     size_t i, j;

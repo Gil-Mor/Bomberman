@@ -52,6 +52,6 @@ sf::RenderWindow& GraphicWindow::getWindow()
 
 Posf GraphicWindow::getSizeF() const
 {
-    return Posf(float(_window.getSize().x), float(_window.getSize().y) );
+    return Posf(static_cast<float>(_window.getSize().x), static_cast<float>(_window.getSize().y) );
 }
 
