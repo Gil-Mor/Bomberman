@@ -1,16 +1,12 @@
 #include "BFSVisitor.h"
 
-
-BFSVisitor::BFSVisitor(AIMapBFSProxy map)
-    :_mapProxy(map)
+BFSVisitor::BFSVisitor(AIMapBFSProxy map) : _mapProxy(map)
 {}
-
 
 void BFSVisitor::setVertexPredecessor(const edge_d& e)
 {
     _mapProxy.setVertexPredecessor(e);
 }
-
 
 bool BFSVisitor::checkStopCondition(const vertex_d& d)
 {
@@ -21,4 +17,3 @@ void BFSVisitor::initializeVertex(const vertex_d& d)
 {
     _mapProxy.initializeVertex(d);
 }
-

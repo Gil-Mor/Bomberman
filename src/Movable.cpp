@@ -5,16 +5,11 @@
 const float MOVE_PER_FRAME = TILE_SIZE.x / 5.f;
 const float COLLISION_BOX_SIZE = TILE_SIZE.x / 4.f;
 
-
-Movable::Movable(const Posf& posf, const Posb& posb)
-    : GameObject(posf, posb), _nextPosb(posb)
-{
-}
+Movable::Movable(const Posf& posf, const Posb& posb) : GameObject(posf, posb), _nextPosb(posb)
+{}
 
 Movable::~Movable()
-{
-}
-
+{}
 
 bool Movable::tryMove(const Direction dir)
 {
@@ -33,9 +28,7 @@ bool Movable::tryMove(const Direction dir)
 
     _moveOffset.offsetCounter += Posf(_moveOffset.x, _moveOffset.y);
 
-
     Posb posFromOffset = getPosbFromOffset();
-
 
     // if not enough offset we don't change position but keep the offset
     if (posFromOffset == _posb) {
@@ -43,29 +36,22 @@ bool Movable::tryMove(const Direction dir)
         return false;
     }
 
-
     // only when the object moves between tiles collide it with the next tile.
     bool success = tryMove(posFromOffset);
 
     // got stuck in obsticle.
-    if (!success) 
-    {
+    if (!success) {
         _moveOffset.offsetCounter = prevOffset;
         _moveOffset.movedInOffset = false;
     }
 
-
-
     updateOffsetCounter();
 
     return success;
-
-
 }
 
 bool Movable::tryMove(Posb& nextPos)
 {
-
     if (!_boardProxy->validPosb(nextPos)) {
         return false;
     }
@@ -81,23 +67,17 @@ bool Movable::tryMove(Posb& nextPos)
     return _movedTile;
 }
 
-
 void Movable::updateOffsetCounter()
 {
-    if (_movedTile)
-    {
-        
+    if (_movedTile) {
         _moveOffset.offsetCounter = -_moveOffset.offsetCounter;
         //_moveOffset.offsetCounter = { 0, 0 };
-
     }
 }
 
-
 void Movable::takeOffset(Movable::Direction dir)
 {
-    switch (dir)
-    {
+    switch (dir) {
         case UP:
             //--nextTile.i;
             _moveOffset.y = -_speed * MOVE_PER_FRAME;
@@ -128,35 +108,27 @@ void Movable::takeOffset(Movable::Direction dir)
             _moveOffset.y = 0;
             _moveOffset.offsetCounter.y = 0;
 
-
             break;
 
         default:
             break;
     }
-
-
 }
-
 
 Posb Movable::getPosbFromOffset()
 {
-
     Posf fixedPos = _boardProxy->getTilePosf(_posb);
-    //sf::FloatRect BoundingBox(fixedPos.x, fixedPos.y, TILE_SIZE.x, TILE_SIZE.y);
-
+    // sf::FloatRect BoundingBox(fixedPos.x, fixedPos.y, TILE_SIZE.x, TILE_SIZE.y);
 
     Posb nextPos = _posb;
-
 
     Posf mytopLeftPosf = _moveOffset.offsetCounter + _posf;
 
     // moved to the left tile
     if (_direction == LEFT && mytopLeftPosf.x <= fixedPos.x - COLLISION_BOX_SIZE) {
-        _moveOffset.offsetCounter.x =- COLLISION_BOX_SIZE ;
+        _moveOffset.offsetCounter.x = -COLLISION_BOX_SIZE;
         --nextPos.j;
     }
-
 
     // moved to the right tile
     else if (_direction == RIGHT && mytopLeftPosf.x + TILE_SIZE.x > fixedPos.x + TILE_SIZE.x + COLLISION_BOX_SIZE) {
@@ -165,14 +137,12 @@ Posb Movable::getPosbFromOffset()
         ++nextPos.j;
     }
 
-
     // moved to upper tile
     else if (_direction == UP && mytopLeftPosf.y < fixedPos.y - COLLISION_BOX_SIZE) {
-        _moveOffset.offsetCounter.y =  -COLLISION_BOX_SIZE;
+        _moveOffset.offsetCounter.y = -COLLISION_BOX_SIZE;
 
         --nextPos.i;
     }
-
 
     // moved down
     else if (_direction == DOWN && mytopLeftPosf.y + TILE_SIZE.y > fixedPos.y + TILE_SIZE.y + COLLISION_BOX_SIZE) {
@@ -181,32 +151,23 @@ Posb Movable::getPosbFromOffset()
         ++nextPos.i;
     }
     return nextPos;
-
 }
-
-
-
 
 void Movable::colideWithNextTile(const Posb& nextTilePos)
 {
-
     const tile& nextTile = _boardProxy->getTile(nextTilePos);
 
     // if there is something in the position then collide with it.
     // action only happen in collisions.
-    for (auto& object : nextTile)
-    {
+    for (auto& object : nextTile) {
         object->colide(*this);
-
     }
 }
 
 void Movable::setMoveOnBoard()
 {
-    if (_movedTile)
-    {
-        if (_teleportationInfo.teleported)
-        {
+    if (_movedTile) {
+        if (_teleportationInfo.teleported) {
             _nextPosb = _teleportationInfo.twinPosb;
         }
 
@@ -215,15 +176,13 @@ void Movable::setMoveOnBoard()
     }
 }
 
-
 void Movable::update()
 {
     if (_moveOffset.movedInOffset) {
         //_posf += Posf(_moveOffset.x, _moveOffset.y);
     }
 
-    if (_movedTile)
-    {
+    if (_movedTile) {
         _posb = _nextPosb;
         //_posf = _boardProxy->getTilePosf(_posb);
     }
@@ -236,21 +195,16 @@ void Movable::update()
 
 void Movable::teleport(Teleport& teleport)
 {
-
-    if (_boardProxy->getElapsedTime().asSeconds() - _teleportationInfo._lastTeleportation >= TELEPORTATION_GAP)
-    {
-
+    if (_boardProxy->getElapsedTime().asSeconds() - _teleportationInfo._lastTeleportation >= TELEPORTATION_GAP) {
         _teleportationInfo.teleported = true;
         _teleportationInfo._lastTeleportation = _boardProxy->getElapsedTime().asSeconds();
         _teleportationInfo.twinPosb = teleport.getTwinPosition();
         _nextPosb = _teleportationInfo.twinPosb;
 
-    }
-    else {
+    } else {
         _nextPosb = teleport.getPosb();
     }
 }
-
 
 Posb Movable::getPosbInDirection(Movable::Direction dir) const
 {
@@ -290,8 +244,7 @@ void Movable::setLastMoveToNow()
     _lastMove = _boardProxy->getElapsedTime().asSeconds();
 }
 
-
-//Posb Movable::getNextTile()
+// Posb Movable::getNextTile()
 //{
 //    Posb nextPosb = _posb;
 //
@@ -315,7 +268,7 @@ void Movable::setLastMoveToNow()
 //
 //}
 
-//Posb Movable::getNextTile(const Posf& movement)
+// Posb Movable::getNextTile(const Posf& movement)
 //{
 //    Posb nextPosb = _posb;
 //
@@ -340,11 +293,7 @@ void Movable::setLastMoveToNow()
 //
 //}
 
-
-
-
-
-//void Movable::updatePosf(const Posf& nextPos)
+// void Movable::updatePosf(const Posf& nextPos)
 //{
 //    if (_posOffset.x <= -TILE_SIZE.x || _posOffset.x >= TILE_SIZE.x) {
 //        _posOffset.x = 0;
@@ -360,6 +309,3 @@ void Movable::setLastMoveToNow()
 //
 //    _sprite.setPosition(_posf);
 //}
-
-
-

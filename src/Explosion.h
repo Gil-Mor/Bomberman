@@ -1,6 +1,6 @@
 #pragma once
 /* Explosion on a single tile. Dynamite puts a "center" explosion on the board.
-The center explosion propagates 4 explosions in all 4 directions, 
+The center explosion propagates 4 explosions in all 4 directions,
 then each one of them propagates in it's own direction.
 Explosions don't move. they propagate. they create another explosion with radius <- radius - 1
 until radius reaches 0.*/
@@ -13,20 +13,14 @@ class ExplosionsBoardProxy;
 
 class Explosion : public Movable
 {
-
 public:
-
-    // The dynamite uses this 
-    Explosion(const Posf& posf, const Posb& posb, size_t radius, Color color, 
-        ExplosionsBoardProxy& explosionProxy);
-
-
+    // The dynamite uses this
+    Explosion(const Posf& posf, const Posb& posb, size_t radius, Color color, ExplosionsBoardProxy& explosionProxy);
 
     ~Explosion();
 
     // override movable update
     virtual void update() override;
-
 
     // ----------- DOUBLE DISPATCH ------------
     virtual void colide(GameObject&) override;
@@ -48,7 +42,6 @@ public:
     virtual void colide(Bonus& other);
 
 private:
-
     ExplosionsBoardProxy& _explosionProxy;
 
     size_t _radius;
@@ -58,30 +51,31 @@ private:
 
     vector<int> _centerPropagate;
 
-    //PropagationDirection _propagationDir;
+    // PropagationDirection _propagationDir;
 
     float _explosionTime = 0;
 
     bool stillPropagate() const;
 
-    // only an explosion can create another explosion. 
+    // only an explosion can create another explosion.
     // The first explosion will create 4 different explosions
-    // the rest of them 
-    Explosion(const Posf& posf, const Posb& posb, size_t radius, Color color, 
-        Movable::Direction dir, ExplosionsBoardProxy& explosionProxy);
+    // the rest of them
+    Explosion(
+        const Posf& posf,
+        const Posb& posb,
+        size_t radius,
+        Color color,
+        Movable::Direction dir,
+        ExplosionsBoardProxy& explosionProxy);
 
-    //Posb getNextTile() const;
+    // Posb getNextTile() const;
 
-
-     struct AnimationInfo
+    struct AnimationInfo
     {
         float frameDuration;
         Animation animation;
 
-     } _animation;
+    } _animation;
 
     void Init(const Color& color);
-
-
 };
-

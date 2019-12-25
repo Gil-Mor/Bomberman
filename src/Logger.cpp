@@ -20,6 +20,4 @@ Logger& Logger::getInstance()
 {
     static Logger _instance;
     return _instance;
-
 }
-

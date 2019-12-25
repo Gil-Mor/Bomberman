@@ -1,5 +1,5 @@
 #pragma once
-/* The bomb. Placed by BomberManon the board, ticks, and then places an explosion. 
+/* The bomb. Placed by BomberManon the board, ticks, and then places an explosion.
 Dynamites and explosions have a special "Explosion Board Proxy" so that only them can
 place explosions on th board. just a security so that BomberMan won't place an explosion
 instead of a dynamite.
@@ -15,16 +15,19 @@ class BomberManProxy;
 class Dynamite : public Movable
 {
 public:
+    Dynamite(
+        const Posf& posf,
+        const Posb& posb,
+        const size_t& radius,
+        Color color,
+        BomberManProxy& owner,
+        ExplosionsBoardProxy& explosionProxy);
 
-    Dynamite(const Posf& posf, const Posb& posb, const size_t& radius, Color color, 
-        BomberManProxy& owner, ExplosionsBoardProxy& explosionProxy);
-
-    //void setDynamiteProxy(ExplosionsBoardProxy* board);
+    // void setDynamiteProxy(ExplosionsBoardProxy* board);
 
     ~Dynamite();
 
     virtual void update() override;
-
 
     void kicked(Movable::Direction dir);
 
@@ -50,7 +53,6 @@ public:
     virtual void colide(Bonus& other);
 
 private:
-
     // Dynamite explosion radius.
     // explosion is the size of radius*tileSize
     size_t _radius = 2;
@@ -75,8 +77,5 @@ private:
         float frameDuration;
     } _animation;
 
-
     GameSound_p _tickSound, _explosionSound;
-
 };
-

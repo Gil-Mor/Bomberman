@@ -16,17 +16,15 @@ class ControllerProxy;
 
 class GraphicWindow;
 
+using std::unique_ptr;
 using std::unordered_map;
 using std::vector;
-using std::unique_ptr;
 
 typedef unique_ptr<Button> button_p;
 
 class Menu
 {
 public:
-
-
     Menu(ControllerProxy& controller);
 
     virtual ~Menu() = 0;
@@ -34,12 +32,11 @@ public:
     /* Iterate through the buttons and activate action
     In the button that was clicked.
     former state so that if the menu can be called from multiple places,
-    like the instruction pages, it'll know where to send the controller back to. 
+    like the instruction pages, it'll know where to send the controller back to.
     */
     virtual void run(GraphicWindow& graphics);
 
 protected:
-
     vector<button_p> _buttons;
 
     // each menu can map keyboard keys to wanted state
@@ -62,7 +59,4 @@ protected:
 
     void cleanMouse();
     bool buttonWasPressed() const;
-
-
 };
-

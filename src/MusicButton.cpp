@@ -2,11 +2,9 @@
 #include "GraphicObjectsManager.h"
 #include "AudioManager.h"
 
-MusicButton::MusicButton(const Posf& pos, MusicAction action)
-    : Button(pos), _action(action)
+MusicButton::MusicButton(const Posf& pos, MusicAction action) : Button(pos), _action(action)
 {
-    switch (action)
-    {
+    switch (action) {
         case MusicButton::VOLUME_UP:
             _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(VOL_UP_BUTTON_T));
             break;
@@ -35,18 +33,17 @@ MusicButton::MusicButton(const Posf& pos, MusicAction action)
     }
 
     // set the button size to the size of the texture which contains a text..
-    _sprite.setSize(Posf(float(_sprite.getSprite().getTextureRect().width*0.8), float(_sprite.getSprite().getTextureRect().height*0.8)));
+    _sprite.setSize(Posf(
+        float(_sprite.getSprite().getTextureRect().width * 0.8),
+        float(_sprite.getSprite().getTextureRect().height * 0.8)));
 }
-
 
 MusicButton::~MusicButton()
-{
-}
+{}
 
 void MusicButton::action() const
 {
-    switch (_action)
-    {
+    switch (_action) {
         case MusicButton::VOLUME_UP:
             AudioManager::getInstance().volumeUp();
 

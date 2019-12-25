@@ -1,6 +1,6 @@
 #pragma once
 /*
-  Buttons that change a state in the controller. 
+  Buttons that change a state in the controller.
 */
 #include "ControllerProxy.h"
 #include "ControllerButton.h"
@@ -18,6 +18,4 @@ public:
 
 private:
     ControllerState _state;
-
 };
-

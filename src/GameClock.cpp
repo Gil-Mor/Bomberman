@@ -1,15 +1,12 @@
 #include "GameClock.h"
 
-
 GameClock::GameClock()
 {
     _clock.reset();
 }
 
-
 GameClock::~GameClock()
-{
-}
+{}
 
 sf::Time GameClock::getElapsedTime() const
 {

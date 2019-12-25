@@ -1,6 +1,6 @@
 #pragma once
-/* Base class for BomberMan. Player and enemies. 
-Collisions are mostly the same for players and enemies. 
+/* Base class for BomberMan. Player and enemies.
+Collisions are mostly the same for players and enemies.
 updating animation according to state is the same.
 */
 #include "Movable.h"
@@ -16,28 +16,12 @@ const float HIT_TIME = 3;
 const int HEALTH_CHANGE = 1;
 const int SPEED_CHANE = 5;
 
-
 class BomberMan : public Movable
 {
 public:
+    enum State { PLAYING_S, EXPLODING_S, LAST_EXPLOSION_S, COMPLETELY_DEAD_S };
 
-    enum State
-    {
-        PLAYING_S,
-        EXPLODING_S,
-        LAST_EXPLOSION_S,
-        COMPLETELY_DEAD_S
-    };
-
-    enum Animations
-    {
-        DOWN_A,
-        UP_A,      
-        LEFT_A,
-        RIGHT_A,
-        EXPLODING_A,
-        NUM_OF_BOMBERMAN_ANIMATIONS
-    };
+    enum Animations { DOWN_A, UP_A, LEFT_A, RIGHT_A, EXPLODING_A, NUM_OF_BOMBERMAN_ANIMATIONS };
 
     BomberMan(const Posf& posf, const Posb& posb);
 
@@ -71,15 +55,14 @@ public:
 
     virtual void colide(Bonus& other);
 
-
 protected:
     // proxy that BomberMan gives to it's dynamites so that they can
-    // call back to him when they explode, incrementing it's available 
+    // call back to him when they explode, incrementing it's available
     // dynamites count.
     BomberManProxy _bomberManProxy;
 
     State _bomberManState = PLAYING_S;
-    
+
     int _health = 3;
 
     // The explosion radius of the bombs this BomberMan puts.
@@ -88,16 +71,12 @@ protected:
     // total number of this BomberMan Dynamites that can be on the board at once.
     int _maxDynamites = 1;
 
-
     // overridden by AIenemy which saves some date.
     virtual void placeDynamite(BoardProxy& board);
-
 
     int _availbleDynamites = _maxDynamites;
 
     void updateAnimation();
- 
-    
 
     // save info about hit
     struct Hit
@@ -105,8 +84,7 @@ protected:
         float hitTime;
         float hitFrameDuration;
 
-    }_hit; 
-
+    } _hit;
 
     Animations getAnimationFromDirection();
 
@@ -115,7 +93,6 @@ protected:
     GameSound_p _dyingSound;
 
 private:
-
     float _lastTeleportation = TELEPORTATION_GAP;
 
     vector<Animation> _animations;
@@ -125,4 +102,3 @@ private:
     // if bomberman can kick dynamites.
     bool _kickability = false;
 };
-

@@ -7,14 +7,11 @@ class ControllerProxy;
 
 class ControllerButton : public Button
 {
-
 public:
     ControllerButton(const Posf& pos, ControllerProxy& controller);
 
     virtual ~ControllerButton() = 0;
 
 protected:
-
     ControllerProxy& _controller;
 };
-

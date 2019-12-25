@@ -7,7 +7,7 @@
 
 const float EXPLOSION_DURATION = 1;
 
-//ExplodingWall::ExplodingWall(const Posf& posf, const Posb& posb, bonus_up bonus)
+// ExplodingWall::ExplodingWall(const Posf& posf, const Posb& posb, bonus_up bonus)
 //    : GameObject(posf, posb), _bonus(std::move(bonus))
 //{
 //    _hasBonus = true;
@@ -17,7 +17,7 @@ const float EXPLOSION_DURATION = 1;
 //
 //}
 //
-//ExplodingWall::ExplodingWall(const Posf& posf, const Posb& posb)
+// ExplodingWall::ExplodingWall(const Posf& posf, const Posb& posb)
 //    : GameObject(posf, posb)
 //{
 //    _bonus.reset(nullptr);
@@ -28,12 +28,11 @@ const float EXPLOSION_DURATION = 1;
 //
 //}
 
-ExplodingWall::ExplodingWall(const Posf& posf, const Posb& posb, Bonus::BonusType bonus)
-    :GameObject(posf, posb), _bonusType(bonus)
+ExplodingWall::ExplodingWall(const Posf& posf, const Posb& posb, Bonus::BonusType bonus) :
+    GameObject(posf, posb), _bonusType(bonus)
 {
     Init();
 }
-
 
 void ExplodingWall::Init()
 {
@@ -46,20 +45,15 @@ void ExplodingWall::Init()
     _sprite.setVisibleRect(_explosion.animation.getFrame());
 }
 
-
 ExplodingWall::~ExplodingWall()
-{
-}
+{}
 
 void ExplodingWall::update()
 {
-    if (_explosion.exploded)
-    {
-        if (_boardProxy->getElapsedTimeAsSeconds() - _explosion.timeOfExplosion >= EXPLOSION_DURATION)
-        {
+    if (_explosion.exploded) {
+        if (_boardProxy->getElapsedTimeAsSeconds() - _explosion.timeOfExplosion >= EXPLOSION_DURATION) {
             if (_bonusType != Bonus::BonusType::NONE) {
-                _boardProxy->placeBonus(std::move(bonus_up(new Bonus (_posf, _posb, _bonusType))));
-
+                _boardProxy->placeBonus(std::move(bonus_up(new Bonus(_posf, _posb, _bonusType))));
             }
 
             _boardProxy->removeExplodingWall(this);
@@ -67,18 +61,13 @@ void ExplodingWall::update()
 
         _explosion.animation.update(_boardProxy->getElapsedTimeAsSeconds(), _explosion.frameDuration);
         _sprite.setVisibleRect(_explosion.animation.getFrame());
-
     }
-
-
-
 }
 
 void ExplodingWall::explode()
 {
     _explosion.exploded = true;
     _explosion.timeOfExplosion = _boardProxy->getElapsedTimeAsSeconds();
-
 }
 
 void ExplodingWall::colide(GameObject& other)
@@ -95,7 +84,6 @@ void ExplodingWall::colide(Explosion& other)
 {
     explode();
     other.colide(*this);
-
 }
 
 void ExplodingWall::colide(BomberMan& other)

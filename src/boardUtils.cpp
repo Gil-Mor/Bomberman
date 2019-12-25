@@ -1,7 +1,6 @@
 #include "definitions.h"
 #include "boardUtils.h"
 
-
 int ManhattanDistance(const Posb& a, const Posb& b)
 {
     return int(abs(a.i - b.i)) + int(abs(a.j - b.j));

@@ -13,8 +13,7 @@
 const float HIT_DURATION = 2;
 const int MAX_HEALTH = 5;
 
-BomberMan::BomberMan(const Posf& posf, const Posb& posb)
-    : Movable(posf, posb), _bomberManProxy(*this)
+BomberMan::BomberMan(const Posf& posf, const Posb& posb) : Movable(posf, posb), _bomberManProxy(*this)
 {
     _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(BOMBER_MAN_T));
     _animations = GraphicObjectsManager::getInstance().getBomberManAnimations();
@@ -22,32 +21,23 @@ BomberMan::BomberMan(const Posf& posf, const Posb& posb)
 
     _hit.hitFrameDuration = HIT_DURATION / _animations[EXPLODING_A].getNumOfFrames();
 
-
     _dyingSound = AudioManager::getInstance().getSound(AudioManager::DIE);
     _hitSound = AudioManager::getInstance().getSound(AudioManager::GETTING_HIT);
-
-
 }
-
 
 BomberMan::~BomberMan()
-{
-}
-
+{}
 
 void BomberMan::updateAnimation()
 {
-    if (_bomberManState == LAST_EXPLOSION_S)
-    {
-        if (!enoughTime(_hit.hitTime, HIT_DURATION))
-        {
+    if (_bomberManState == LAST_EXPLOSION_S) {
+        if (!enoughTime(_hit.hitTime, HIT_DURATION)) {
             _animations[EXPLODING_A].update(getTimeAsSeconds(), _hit.hitFrameDuration);
             _sprite.setVisibleRect(_animations[_currAnimation].getFrame());
 
         }
         // else - last explosions's over.. now dead..
-        else
-        {
+        else {
             _bomberManState = COMPLETELY_DEAD_S;
             _sprite.setTexture(GraphicObjectsManager::getInstance().getTexture(GRAVE_T));
             restoreVisibleRect();
@@ -56,51 +46,41 @@ void BomberMan::updateAnimation()
 
     }
 
-    else if (_bomberManState == EXPLODING_S)
-    {
+    else if (_bomberManState == EXPLODING_S) {
         _currAnimation = EXPLODING_A;
 
-        if (!enoughTime(_hit.hitTime, HIT_DURATION))
-        {
+        if (!enoughTime(_hit.hitTime, HIT_DURATION)) {
             _animations[_currAnimation].update(getTimeAsSeconds(), _hit.hitFrameDuration);
             _sprite.setVisibleRect(_animations[_currAnimation].getFrame());
-            
 
-        }
-        else
-        {
+        } else {
             _bomberManState = PLAYING_S;
 
             _currAnimation = getAnimationFromDirection();
             _sprite.setVisibleRect(_animations[_currAnimation].getFrame());
         }
-        
+
     }
 
     else if (_moveOffset.movedInOffset) {
         _currAnimation = getAnimationFromDirection();
         _animations[_currAnimation].update(_boardProxy->getElapsedTimeAsSeconds(), 0);
         _sprite.setVisibleRect(_animations[_currAnimation].getFrame());
-
     }
-
 }
-
 
 void BomberMan::placeDynamite(BoardProxy& board)
 {
-    if (_availbleDynamites > 0)
-    {
-        board.placeDynamite(std::move(dynamite_up(new Dynamite(_posf, _posb, _explosionRadius, _sprite.getColor(),
-            _bomberManProxy, _boardProxy->getExplosionProxy()))));
+    if (_availbleDynamites > 0) {
+        board.placeDynamite(std::move(dynamite_up(new Dynamite(
+            _posf, _posb, _explosionRadius, _sprite.getColor(), _bomberManProxy, _boardProxy->getExplosionProxy()))));
         --_availbleDynamites;
     }
 }
 
 BomberMan::Animations BomberMan::getAnimationFromDirection()
 {
-    switch (_direction)
-    {
+    switch (_direction) {
         case Movable::UP:
             return UP_A;
             break;
@@ -117,20 +97,16 @@ BomberMan::Animations BomberMan::getAnimationFromDirection()
             return RIGHT_A;
             break;
 
-
             // bomberMan facing forward.
         default:
             return DOWN_A;
-
             break;
     }
 }
 
 void BomberMan::hitFromExplosion()
 {
-    if (_bomberManState == EXPLODING_S
-        || _bomberManState == LAST_EXPLOSION_S 
-        || _bomberManState == COMPLETELY_DEAD_S) {
+    if (_bomberManState == EXPLODING_S || _bomberManState == LAST_EXPLOSION_S || _bomberManState == COMPLETELY_DEAD_S) {
         return;
     }
 
@@ -140,23 +116,18 @@ void BomberMan::hitFromExplosion()
     if (_health <= 0) {
         _bomberManState = LAST_EXPLOSION_S;
         _dyingSound->play();
-    }
-    else
-    {
+    } else {
         _bomberManState = EXPLODING_S;
-
     }
     _currAnimation = EXPLODING_A;
 
     _hit.hitTime = _boardProxy->getElapsedTime().asSeconds();
-
 }
 
 BomberMan::State BomberMan::getState() const
 {
     return _bomberManState;
 }
-
 
 void BomberMan::colide(GameObject& other)
 {
@@ -185,12 +156,10 @@ void BomberMan::colide(BomberMan& other)
     _movedTile = true;
 }
 
-
 void BomberMan::colide(FreeTile& other)
 {
     (void)other;
     _movedTile = true;
-
 }
 
 void BomberMan::colide(StoneWall& other)
@@ -209,19 +178,16 @@ void BomberMan::colide(Teleport& other)
 {
     _movedTile = true;
     teleport(other);
-
 }
 
 void BomberMan::colide(Bonus& other)
 {
-    switch (other.getType())
-    {
+    switch (other.getType()) {
         case Bonus::BonusType::HEALTH:
             _health += HEALTH_CHANGE;
             if (_health > MAX_HEALTH)
                 _health = MAX_HEALTH;
             break;
-
 
         case Bonus::BonusType::SPEED:
             ++_speed;
@@ -238,8 +204,6 @@ void BomberMan::colide(Bonus& other)
         case Bonus::BonusType::KICKABILITY:
             _kickability = true;
             break;
-
-
     }
     _movedTile = true;
     _boardProxy->removeBonus(&other);
@@ -250,5 +214,3 @@ void BomberMan::dynamiteExploded()
 {
     ++_availbleDynamites;
 }
-
-

@@ -12,7 +12,5 @@ public:
     void dynamiteExploded();
 
 private:
-
     BomberMan& _bomberMan;
 };
-

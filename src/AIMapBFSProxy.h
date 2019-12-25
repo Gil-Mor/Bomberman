@@ -22,8 +22,6 @@ public:
     bool checkStopCondition(const vertex_d& d);
 
 private:
-
     AIMap& _map;
     BfsStopCondition _stopCondition;
 };
-

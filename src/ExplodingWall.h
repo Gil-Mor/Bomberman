@@ -8,17 +8,13 @@
 class ExplodingWall : public GameObject
 {
 public:
-
     ExplodingWall(const Posf& posf, const Posb& posi, Bonus::BonusType type);
-
-
 
     virtual ~ExplodingWall();
 
     virtual void update() override;
 
     void explode();
-
 
     // ----------- DOUBLE DISPATCH ------------
     virtual void colide(GameObject& other) override;
@@ -30,7 +26,6 @@ public:
     virtual void colide(BomberMan& other) override;
 
 private:
-
     Bonus::BonusType _bonusType;
 
     struct ExplosionInfo
@@ -40,10 +35,7 @@ private:
         float frameDuration;
         float timeOfExplosion;
 
-
     } _explosion;
 
     void Init();
-
 };
-

@@ -1,6 +1,6 @@
 #pragma once
 /* Base Class for enemies. enemies can differ in the order of
-updating their state. 
+updating their state.
 */
 #include "BomberMan.h"
 #include "definitions.h"
@@ -22,16 +22,13 @@ typedef stack<Movable::Direction> OptionalDirections;
 class AIEnemy : public BomberMan
 {
 public:
-
-    enum EnemyState
-    {
+    enum EnemyState {
         RUNAWAY_S,
 
         IN_SHELTER_S,
         ATTACKING_S,
         REACHED_TARGET_S
     };
-
 
     AIEnemy(const Posf& posf, const Posb& posb, int enemyNum);
 
@@ -41,7 +38,6 @@ public:
     virtual ~AIEnemy() = 0;
 
 protected:
-
     EnemyBoardProxy* _enemyProxy;
 
     struct Attack
@@ -49,15 +45,12 @@ protected:
         Posb generalDirection;
         Path path;
 
-    }_attack;
-    
+    } _attack;
+
     void continueInAttackPath();
     bool finishedAttackPath();
 
-
-    // 
     virtual void placeDynamite(BoardProxy& board) override;
-
 
     struct RunAway
     {
@@ -65,27 +58,23 @@ protected:
         float time = 0;
         Path path;
 
-    }_runAway;
-
+    } _runAway;
 
     void goToRunAwayState();
     void continueInRunAwayPath();
     bool finishedRunAway();
 
-
     struct Shelter
     {
-        float time = 0; 
+        float time = 0;
     } _shelter;
 
     void goToShelterState();
     bool enoughTimeInShelter(float shelterTime);
 
-
     OptionalDirections directionToPos(const Posb& pos);
 
     bool isFreeTile(Movable::Direction dir);
-
 
     EnemyState _enemyState = ATTACKING_S;
 
@@ -93,4 +82,3 @@ protected:
     bool inDanger() const;
     bool dangerousPos(const Posb& pos, DangerType danger) const;
 };
-

@@ -114,3 +114,5 @@ add_custom_target(copy_sfml_libs_to_bin_dir
     cp /usr/lib/x86_64-linux-gnu/libsndio.so.6.1 ${CMAKE_BINARY_DIR}
     DEPENDS bomberman
 )
+
+include(CodeFormatter)

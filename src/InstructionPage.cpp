@@ -4,10 +4,8 @@
 #include "FlipPageButton.h"
 #include "returnButton.h"
 
-
 const size_t NUM_OF_INSTRUCTION_PAGES = 2;
-InstructionPage::InstructionPage(ControllerProxy& controller)
-    :Menu(controller)
+InstructionPage::InstructionPage(ControllerProxy& controller) : Menu(controller)
 {
     _pages.resize(NUM_OF_PAGES);
     _pages[0].setTexture(GraphicObjectsManager::getInstance().getTexture(INSTRUCTION_PAGE_1_T));
@@ -16,9 +14,7 @@ InstructionPage::InstructionPage(ControllerProxy& controller)
     _pages[3].setTexture(GraphicObjectsManager::getInstance().getTexture(INSTRUCTION_PAGE_4_T));
     _pages[4].setTexture(GraphicObjectsManager::getInstance().getTexture(INSTRUCTION_PAGE_5_T));
 
-
-    for (auto& page : _pages)
-    {
+    for (auto& page : _pages) {
         page.setSize(controller.getWindowSize());
     }
 
@@ -27,9 +23,7 @@ InstructionPage::InstructionPage(ControllerProxy& controller)
     _bgImg = _pages[PAGE_ONE];
 
     setButtons();
-
 }
-
 
 InstructionPage::~InstructionPage()
 {}
@@ -38,19 +32,18 @@ void InstructionPage::setButtons()
 {
     Posf winSize = _controller.getWindowSize();
 
-    _buttons.emplace_back(new returnButton({ 30, 50 }, _controller));
+    _buttons.emplace_back(new returnButton({30, 50}, _controller));
 
-    _buttons.emplace_back(new FlipPageButton({ 30, winSize.y - 100 }, FlipPageButton::BACK, *this));
+    _buttons.emplace_back(new FlipPageButton({30, winSize.y - 100}, FlipPageButton::BACK, *this));
 
-    _buttons.emplace_back(new FlipPageButton({ winSize.x - 200, winSize.y - 100 },
+    _buttons.emplace_back(new FlipPageButton(
+        {winSize.x - 200, winSize.y - 100},
 
-        FlipPageButton::NEXT, *this));
-
+        FlipPageButton::NEXT,
+        *this));
 }
 
-
-
-//void InstructionPage::run(GraphicWindow& window)
+// void InstructionPage::run(GraphicWindow& window)
 //{
 //    Menu::run(window);
 //    _controller.goToPreviousState();
@@ -58,18 +51,15 @@ void InstructionPage::setButtons()
 
 void InstructionPage::flipPage(FlipPageButton::Direction dir)
 {
-    switch (dir)
-    {
-        case FlipPageButton::Direction::NEXT:
-        {
+    switch (dir) {
+        case FlipPageButton::Direction::NEXT: {
             if (_currPage < _pages.size() - 1) {
                 ++_currPage;
                 _bgImg = _pages[_currPage];
             }
             break;
         }
-        case FlipPageButton::Direction::BACK:
-        {
+        case FlipPageButton::Direction::BACK: {
             if (_currPage > 0) {
                 --_currPage;
                 _bgImg = _pages[_currPage];
@@ -78,6 +68,3 @@ void InstructionPage::flipPage(FlipPageButton::Direction dir)
         }
     }
 }
-
-
-

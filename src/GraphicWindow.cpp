@@ -28,7 +28,6 @@ void GraphicWindow::draw(const sf::RectangleShape& rect)
     _window.draw(rect);
 }
 
-
 void GraphicWindow::display()
 {
     _window.display();
@@ -46,6 +45,5 @@ sf::RenderWindow& GraphicWindow::getWindow()
 
 Posf GraphicWindow::getSizeF() const
 {
-    return Posf(static_cast<float>(_window.getSize().x), static_cast<float>(_window.getSize().y) );
+    return Posf(static_cast<float>(_window.getSize().x), static_cast<float>(_window.getSize().y));
 }
-

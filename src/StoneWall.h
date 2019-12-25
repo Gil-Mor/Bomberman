@@ -8,7 +8,6 @@ class StoneWall : public GameObject
 public:
     StoneWall(const Posf& posf, const Posb& posb);
 
-    
     virtual ~StoneWall();
 
     // ----------- DOUBLE DISPATCH ------------
@@ -20,4 +19,3 @@ public:
 
     virtual void colide(BomberMan& other) override;
 };
-

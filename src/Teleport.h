@@ -1,5 +1,5 @@
 #pragma once
-/* 
+/*
 Teleport. Has a twin.
 */
 #include "GameObject.h"
@@ -10,14 +10,12 @@ Teleport. Has a twin.
 class Teleport : public GameObject
 {
 public:
-
-    enum Animations { 
+    enum Animations {
         REST_A,
         ACTIVE_A,
 
         NUM_OF_ANIMATIONS_A
     };
-
 
     Teleport(const Posf& posf, const Posb& selfPosi, int ID);
 
@@ -30,11 +28,8 @@ public:
     /* Get the position of the twin teleport. */
     const Posb& getTwinPosition() const;
 
-
     // for validation in level builder
     bool getHasTwin() const;
-
-
 
     virtual void update() override;
 
@@ -48,14 +43,10 @@ public:
     virtual void colide(BomberMan& other) override;
 
 private:
-
-
     // last time of teleportation. for animation.
     float _teleportationTime = 0;
 
-
     float _activeDuration;
-
 
     void activate();
 
@@ -75,7 +66,4 @@ private:
     vector<Animation> _animations;
 
     GameSound_p _teleportSound;
-
-
 };
-
