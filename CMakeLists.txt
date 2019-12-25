@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.10.2)  # CMake version check
-project(Bomberman)                      # Create project "simple_example"
+cmake_minimum_required(VERSION 3.10)
+project(Bomberman)
 
-set(CMAKE_CXX_STANDARD 14)              # Enable c++14 standard
+set(CMAKE_CXX_STANDARD 14)
 add_compile_options(
     # Dialect options
     -Wdelete-non-virtual-dtor
@@ -19,9 +19,6 @@ add_compile_options(
     -Wunused-macros
     -Wlogical-op
     -Wredundant-decls
-    -Wvariadic-macros
-    -Wstack-protector
-    -Woverlength-strings
     # Ignore SFML errors
     -Wno-switch
 )
