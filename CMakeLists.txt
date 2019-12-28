@@ -1,33 +1,41 @@
 cmake_minimum_required(VERSION 3.10)
 project(Bomberman)
 
+IF (NOT CMAKE_BUILD_TYPE)
+    SET(CMAKE_BUILD_TYPE Debug)
+ENDIF ()
+
+# Create compilation data base for tools (e.g. clang-tidy)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 set(CMAKE_CXX_STANDARD 14)
 add_compile_options(
     # Dialect options
     -Wdelete-non-virtual-dtor
-    -Wnoexcept
     -Wnon-virtual-dtor
-    -Wstrict-null-sentinel
     # Warning options
     -Wall
     -Wextra
     -Werror
-    -Wdouble-promotion
-    -Wunused-but-set-variable
     -Wunused-local-typedefs
     -Wfloat-equal
     -Wunused-macros
-    -Wlogical-op
     -Wredundant-decls
     # Ignore SFML errors
     -Wno-switch
 )
 
-IF (NOT CMAKE_BUILD_TYPE)
-    message(STATUS "Setting CMAKE_BUILD_TYPE TO Debug")
-    SET(CMAKE_BUILD_TYPE Debug)
-    message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
-ENDIF ()
+if(NOT RUN_CLANG_TIDY)
+    # These compilation flags aren't supported by clang so they'll
+    # mess up clang-tidy output. Add them if not using clang-tidy
+    add_compile_options(
+        -Wlogical-op
+        -Wnoexcept
+        -Wstrict-null-sentinel
+        -Wunused-but-set-variable
+    )
+endif()
+
 
 set(SOURCES
     src/AIEnemy.cpp
@@ -116,3 +124,6 @@ add_custom_target(copy_sfml_libs_to_bin_dir
 )
 
 include(CodeFormatter)
+if (RUN_CLANG_TIDY)
+    include (StaticCodeAnalysis)
+endif()
